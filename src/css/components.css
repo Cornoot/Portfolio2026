@@ -67,6 +67,8 @@
 
 /* --- Top Nav ------------------------------------------------ */
 .topnav {
+  position: relative;
+  z-index: 2;                    /* stays crisp above the hero-band bleeding up behind it */
   background: var(--gray-0);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-16);

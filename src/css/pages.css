@@ -16,6 +16,7 @@
 .hero-band {
   position: absolute;
   inset: 0;
+  top: -38px;   /* bleeds up to the vertical middle of the ~76px nav bar */
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
