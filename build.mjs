@@ -39,7 +39,8 @@ function renderHome(data) {
   const hero = `
     <section class="surface--hero">
       <div class="prose-shell">
-        <div class="hero-band hero-band--home">
+        <div class="hero-wrap">
+          <div class="hero-band hero-band--home hero-band--overlap"></div>
           <div class="hero">
             <div class="hero__text">
               <div class="hero__lines">
@@ -111,7 +112,8 @@ function renderAbout(data, body) {
   const a = data.about;
 
   const intro = `
-        <div class="hero-band hero-band--about">
+        <div class="hero-wrap">
+          <div class="hero-band hero-band--about"></div>
           <div class="about__intro">
             <div class="about__intro-text">
               <h1>${inline(a.heading)}</h1>
@@ -130,7 +132,7 @@ function renderAbout(data, body) {
         </div>`).join("\n");
 
   const cv = (data.cv || []).map((j) => `
-          <div class="cv__item">
+          <div class="cv__item cv__item--${esc(j.rowColor || "row3")}">
             <div class="cv__head">
               <p class="cv__role">${inline(j.role)}${
                 j.label ? `<span class="cv__label">${esc(j.label)}</span>` : ""

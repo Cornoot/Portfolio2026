@@ -106,13 +106,12 @@
 }
 
 /* --- Photo frame (hero + about portrait) -------------------- */
-/* White border, 24px radius, soft shadow, 2deg rotation. */
+/* White border, 24px radius, soft shadow. */
 .photo-frame {
   background: var(--gray-0);
   border-radius: var(--radius-24);
   box-shadow: var(--shadow-photo);
   padding: 12px;
-  rotate: 2deg;
   max-width: 526px;
   width: 100%;
 }
@@ -125,7 +124,15 @@
 }
 
 /* --- Work section ------------------------------------------- */
+/* Pulled up into the hero-band's tail (see .hero-band's -96px
+   bottom extension), so the mint colour shows as a margin
+   around the top of this narrower, white card — matching the
+   layering in Figma, where Rectangle 75 is wider than this
+   card's shell and extends behind it.                          */
 .work {
+  position: relative;
+  z-index: 1;
+  margin-top: -96px;
   background: var(--gray-0);
   border-radius: var(--radius-24);
   padding: 40px 40px 56px;

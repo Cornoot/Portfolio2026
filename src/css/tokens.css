@@ -35,6 +35,13 @@
   /* --- Colour: hero background blocks (Rectangle 75 / 76) - */
   --hero-mint:     #e8f9f9;  /* home hero, behind text + photo   */
   --hero-lavender: #f3f0ff;  /* about hero, behind intro + photo */
+  --hero-band-max: 1296px;   /* Figma: 1440 canvas minus 72px margin each side — wider than the 1216px shell */
+
+  /* --- Colour: CV row backgrounds (node 3218:9735) --------- */
+  --cv-row-1: #ebf6ff;
+  --cv-row-2: #f0f6ff;
+  --cv-row-3: #f4f4f5;
+  --cv-label-bg: #d4d4d8;
 
   /* --- Elevation primitives (SDS) ------------------------- */
   --depth-0:   0px;

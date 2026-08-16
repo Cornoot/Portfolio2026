@@ -3,22 +3,42 @@
    ============================================================ */
 
 /* --- Hero (home) -------------------------------------------- */
-/* Full-bleed colour block behind the hero, rounded on desktop
-   to match Figma's Rectangle 75 (home) / 76 (about).
-   No overflow-clip here: Figma's photo-frame shadow is meant
-   to bleed past the colour block's edge onto the page behind
-   it, not get cut off hard at the rounded corner.               */
+/* --- Hero colour band ---------------------------------------
+   Figma's Rectangle 75/76 is wider than the nav/content shell
+   (72px page margin vs. the shell's 112px), so the colour
+   bleeds past the text+photo content on desktop. On tablet and
+   mobile it runs fully edge-to-edge.
+   .hero-wrap is the positioning context: the band paints behind
+   the actual hero content as an absolutely-positioned layer, so
+   it can extend further down than the content itself.          */
+.hero-wrap { position: relative; }
+
 .hero-band {
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--hero-band-max);
   border-radius: var(--radius-24);
+  z-index: 0;
 }
+/* Only the home hero needs to bleed further down: its tail
+   peeks out behind the "Uitgelicht werk" card that overlaps it
+   (see .work's negative margin). The about hero has no card
+   sitting on top of it afterwards, so it stays flush.          */
+.hero-band--overlap { bottom: -96px; }
+
 .hero-band--home    { background: var(--hero-mint); }
 .hero-band--about   { background: var(--hero-lavender); }
 
 @media (max-width: 767px) {
-  .hero-band { border-radius: 0; }
+  .hero-band { max-width: none; left: 0; transform: none; border-radius: 0; }
 }
 
 .hero {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,9 +74,13 @@
 
 /* --- Home surfaces ------------------------------------------ */
 /* The hero sits on white; the work section on Gray/50. Both
-   run full-bleed while their content stays capped and centred. */
+   run full-bleed while their content stays capped and centred.
+   flow-root prevents the work card's negative margin (below)
+   from collapsing through and shifting this section's own
+   background — without it the grey bg would shift up and
+   hide the mint peeking out behind the card.                   */
 .surface--hero { background: var(--gray-0); }
-.surface--work { background: var(--gray-50); padding-bottom: 96px; }
+.surface--work { background: var(--gray-50); padding-bottom: 96px; display: flow-root; }
 
 /* --- About -------------------------------------------------- */
 .about {
@@ -67,6 +91,8 @@
 }
 
 .about__intro {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -96,8 +122,12 @@
 .cv__item {
   display: flex;
   gap: 24px;
-  padding: 24px;
+  padding: 24px 32px 24px 24px;
+  border-radius: var(--radius-8);
 }
+.cv__item--row1 { background: var(--cv-row-1); }
+.cv__item--row2 { background: var(--cv-row-2); }
+.cv__item--row3 { background: var(--cv-row-3); }
 
 .cv__head { width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; }
 
@@ -117,13 +147,12 @@
   align-items: center;
   padding: 4px;
   border-radius: 4px;
-  background: var(--gray-100);
-  border: 1px solid var(--gray-200);
+  background: var(--cv-label-bg);
   font-family: var(--font-body);
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 8px;
+  line-height: 8px;
   font-weight: 600;
-  color: var(--gray-700);
+  color: var(--card-meta);
   white-space: nowrap;
 }
 
