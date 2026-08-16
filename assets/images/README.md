@@ -23,7 +23,7 @@ anders klopt de gereserveerde ruimte niet en krijg je layout shift.
 | `bass.jpg` | 348 x 348 | 3218:9794 |
 
 ## Social sharing
-`og-home.jpg` en `og-about.jpg`, beide 1200 x 630.
+`og-image.jpg`, 1200 x 630. Wordt door beide pagina's gedeeld.
 
 Exporteer op 2x voor scherpe weergave op retina-schermen.
 De favicon `favicon.svg` is een tijdelijke reconstructie -- exporteer

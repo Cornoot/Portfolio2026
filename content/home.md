@@ -1,7 +1,7 @@
 ---
 title: "Corné van den Boogert — UX/Product Designer"
 description: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2C ervaringen."
-ogImage: "og-home.jpg"
+ogImage: "og-image.jpg"
 
 hero:
   eyebrow: "Daar heb je 'm!"

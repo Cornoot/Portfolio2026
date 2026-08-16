@@ -1,7 +1,7 @@
 ---
 title: "Over mij — Corné van den Boogert"
 description: "Passie voor pixels, muziek en katten. Over mijn werk, mijn leerpunten en wat ik doe als ik niet ontwerp."
-ogImage: "og-about.jpg"
+ogImage: "og-image.jpg"
 
 about:
   heading: "Passie voor pixels, muziek en katten"
