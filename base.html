@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+
+  <link rel="canonical" href="{{siteUrl}}{{path}}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Corné van den Boogert">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{siteUrl}}{{path}}">
+  <meta property="og:image" content="{{siteUrl}}/assets/images/{{ogImage}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{siteUrl}}/assets/images/{{ogImage}}">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=REM:wght@400;600;700&family=Inter:ital,wght@0,400;0,600;1,400&display=swap">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Direct naar de inhoud</a>
+
+  <header class="surface--hero">
+    <div class="shell">
+      <nav class="topnav" aria-label="Hoofdnavigatie">
+        <div class="topnav__inner">
+          <a class="topnav__name" href="/">Corné van den Boogert</a>
+          <div class="topnav__actions">
+            <a class="btn btn--secondary" href="/about.html">Over mij</a>
+            <a class="btn btn--primary" href="mailto:cornevandenboogert@hotmail.com">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+{{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__name">Corné van den Boogert</p>
+      <div class="site-footer__socials">
+        <div class="site-footer__row">
+          <span class="site-footer__label">Volg mij via</span>
+          <a class="btn btn--secondary" href="https://www.linkedin.com/in/corne-van-den-boogert/"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn--secondary" href="https://www.instagram.com/cornoot/"
+             target="_blank" rel="noopener noreferrer">Instagram</a>
+          <span class="site-footer__label">of stuur een</span>
+          <a class="btn btn--secondary" href="mailto:cornevandenboogert@hotmail.com">Email</a>
+        </div>
+        <p class="site-footer__made">Gemaakt met ❤️ en 🧀 in Gouda</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

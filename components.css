@@ -1,0 +1,276 @@
+/* ============================================================
+   components.css
+   Mirrors the Figma component library (node 3218:10165).
+   Active/clicked state deliberately reuses the rest state.
+   ============================================================ */
+
+/* --- Button base ------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 10px 16px;
+  border-radius: var(--radius-8);
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  text-decoration: none;
+  white-space: nowrap;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background-color var(--transition-fast) var(--ease),
+                     box-shadow var(--transition-fast) var(--ease),
+                     color var(--transition-fast) var(--ease); }
+}
+
+/* Icon-bearing variants use asymmetric padding, per Figma. */
+.btn--icon { gap: 8px; padding-left: 16px; padding-right: 12px; }
+.btn--icon:hover { gap: 12px; }
+
+.btn__icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* --- Button / Primary --------------------------------------- */
+.btn--primary {
+  background: var(--gray-900);
+  color: var(--gray-0);
+}
+.btn--primary:hover {
+  background: var(--blue-900);
+  box-shadow: var(--shadow-btn-primary-hover);
+}
+.btn--primary:active {
+  background: var(--gray-900);
+  box-shadow: none;
+}
+
+/* --- Button / Secondary ------------------------------------- */
+.btn--secondary {
+  height: 44px;
+  background: var(--gray-0);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-200);
+}
+.btn--secondary:hover {
+  background: var(--gray-50);
+  color: var(--gray-900);
+  filter: drop-shadow(var(--shadow-btn-secondary-hover));
+}
+.btn--secondary:active {
+  background: var(--gray-0);
+  color: var(--gray-700);
+  filter: none;
+}
+
+/* --- Top Nav ------------------------------------------------ */
+.topnav {
+  background: var(--gray-0);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-16);
+  filter: drop-shadow(var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-200));
+  padding: 16px 24px;
+  margin-top: 32px;
+}
+
+.topnav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topnav__name {
+  font-family: var(--font-body);
+  font-size: var(--intro-size);
+  font-weight: var(--intro-weight);
+  line-height: var(--intro-line);
+  color: var(--gray-800);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topnav__actions { display: flex; align-items: center; gap: 16px; }
+
+/* The "Over mij" nav button is absent on tablet and mobile in
+   the Figma design. Route to About is the hero CTA there. */
+@media (max-width: 1199px) {
+  .topnav__actions .btn--secondary { display: none; }
+}
+
+@media (max-width: 767px) {
+  .topnav { padding: 16px 24px; }
+  .topnav__name { font-size: 20px; line-height: 32px; white-space: normal; }
+}
+
+/* --- Photo frame (hero + about portrait) -------------------- */
+/* White border, 24px radius, soft shadow, 2deg rotation. */
+.photo-frame {
+  background: var(--gray-0);
+  border-radius: var(--radius-24);
+  box-shadow: var(--shadow-photo);
+  padding: 12px;
+  rotate: 2deg;
+  max-width: 526px;
+  width: 100%;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-12);
+  object-fit: cover;
+}
+
+/* --- Work section ------------------------------------------- */
+.work {
+  background: var(--gray-0);
+  border-radius: var(--radius-24);
+  padding: 40px 40px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: clip;
+}
+
+@media (max-width: 767px) {
+  .work { padding: 16px 16px 32px; border-radius: var(--radius-16); }
+}
+
+/* --- Project card ------------------------------------------- */
+.card {
+  border-radius: var(--radius-16);
+  padding: 32px;
+  overflow: clip;
+}
+.card--sand { background: var(--card-sand); }
+.card--sky  { background: var(--card-sky); }
+.card--ice  { background: var(--card-ice); }
+
+.card__grid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.card__body {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card__header { display: flex; flex-direction: column; gap: 16px; }
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--card-meta);
+}
+.card__meta strong { font-weight: 600; }
+.card__meta span { font-weight: 400; }
+.card__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-meta);
+  flex-shrink: 0;
+}
+
+.card__content { display: flex; flex-direction: column; gap: 20px; }
+
+.card__outcome-title {
+  font-family: var(--font-display);
+  font-size: var(--h5-size);
+  line-height: var(--h5-line);
+  font-weight: var(--h5-weight);
+  color: var(--card-meta);
+}
+
+.card__outcomes {
+  margin: 11px 0 0;
+  padding-left: 24px;
+  color: var(--gray-800);
+}
+.card__outcomes li { margin: 0; }
+
+/* Card image holds its Figma aspect ratio at every breakpoint. */
+.card__media {
+  flex: 1 0 0;
+  min-width: 0;
+  align-self: stretch;
+  border-radius: var(--radius-12);
+  overflow: hidden;
+}
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-12);
+}
+
+/* Cards alternate image side on desktop, per the design. */
+.card--media-first .card__grid { flex-direction: row-reverse; }
+
+@media (max-width: 767px) {
+  .card { padding: 32px; }
+  .card__grid,
+  .card--media-first .card__grid { flex-direction: column; gap: 40px; }
+  .card__media { width: 100%; aspect-ratio: 1 / 1; }
+}
+
+/* --- Footer -------------------------------------------------- */
+.site-footer {
+  background: var(--gray-100);
+  padding: 56px 72px 96px;
+  margin-top: 96px;
+}
+
+.site-footer__inner {
+  max-width: var(--footer-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.site-footer__name {
+  font-family: var(--font-display);
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: var(--h3-weight);
+  color: var(--gray-900);
+}
+
+.site-footer__socials { display: flex; flex-direction: column; gap: 12px; }
+
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer__label,
+.site-footer__made {
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  color: var(--gray-700);
+}
+
+.site-footer__made { display: flex; align-items: center; min-height: 44px; }
+
+@media (max-width: 767px) {
+  .site-footer { padding: 24px 20px 64px; }
+  .site-footer__name { font-size: var(--h4-size); line-height: var(--h4-line); }
+  .site-footer__row { gap: 12px 8px; }
+}

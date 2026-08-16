@@ -1,0 +1,164 @@
+/* ============================================================
+   pages.css — home + about layout
+   ============================================================ */
+
+/* --- Hero (home) -------------------------------------------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 100px;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 526px;
+}
+
+.hero__lines { display: flex; flex-direction: column; gap: 12px; }
+
+.hero__media {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1023px) {
+  .hero { flex-direction: column; align-items: flex-start; padding-block: 64px 48px; }
+  .hero__media { align-self: center; padding-block: 24px; }
+}
+
+/* --- Home surfaces ------------------------------------------ */
+/* The hero sits on white; the work section on Gray/50. Both
+   run full-bleed while their content stays capped and centred. */
+.surface--hero { background: var(--gray-0); }
+.surface--work { background: var(--gray-50); padding-bottom: 96px; }
+
+/* --- About -------------------------------------------------- */
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding-block: 100px;
+}
+
+.about__intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.about__intro-text { display: flex; flex-direction: column; gap: 24px; max-width: 484px; }
+
+.about__section { display: flex; flex-direction: column; gap: 16px; }
+.about__section p { max-width: 75ch; }
+
+@media (max-width: 1023px) {
+  .about { gap: 56px; padding-block: 64px 48px; }
+  .about__intro { flex-direction: column; }
+  .about__intro-text { max-width: none; }
+  .about__portrait { align-self: center; }
+}
+
+/* --- CV list ------------------------------------------------- */
+.cv { display: flex; flex-direction: column; }
+
+.cv__item {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+.cv__head { width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; }
+
+.cv__role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 38px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.cv__label {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  font-family: var(--font-body);
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 600;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+.cv__duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--card-meta);
+}
+.cv__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--card-meta); flex-shrink: 0; }
+
+.cv__description { flex: 1 1 auto; min-width: 0; color: var(--gray-800); }
+
+@media (max-width: 767px) {
+  .cv__item { flex-direction: column; gap: 24px; }
+  .cv__head { width: auto; }
+  .cv__role { font-size: 20px; line-height: 32px; flex-wrap: wrap; }
+}
+
+/* --- Photo grid ---------------------------------------------- */
+/* Ratios are preserved per breakpoint via aspect-ratio, so the
+   grid never crops differently than the design intends.         */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.photo-grid figure { margin: 0; }
+
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-12);
+}
+
+.photo-grid__item { border-radius: var(--radius-12); overflow: hidden; }
+
+/* Desktop: middle image is a tall portrait spanning two rows. */
+.photo-grid__item--tall { grid-row: span 2; aspect-ratio: 348 / 653; }
+.photo-grid__item--square { aspect-ratio: 348 / 312; }
+.photo-grid__item--bass { aspect-ratio: 348 / 348; }
+
+@media (max-width: 1023px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid__item--tall { aspect-ratio: 344 / 640; }
+}
+
+@media (max-width: 767px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid__item--tall { grid-row: auto; aspect-ratio: 329 / 640; }
+  .photo-grid__item--square { aspect-ratio: 329 / 312; }
+  .photo-grid__item--bass { aspect-ratio: 1 / 1; }
+}
+
+/* --- Closing block ------------------------------------------- */
+.closing { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.closing p { max-width: 75ch; }

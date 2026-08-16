@@ -1,0 +1,110 @@
+/* ============================================================
+   tokens.css
+   Every value here is read directly from Figma
+   (file 7pVjAAYSG0ohQpe5RJ9Bal). Do not invent new values —
+   add them in Figma first, then mirror them here.
+   ============================================================ */
+
+:root {
+  /* --- Colour: Gray scale (Figma variable group "Gray") ----- */
+  --gray-0:   #ffffff;
+  --gray-50:  #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+
+  /* --- Colour: accent ------------------------------------- */
+  /* Blue/900 — used only for the Primary button hover state. */
+  --blue-900: #002c50;
+
+  /* --- Colour: card surfaces ------------------------------ */
+  /* Raw hex in Figma (not variables). One per project card,
+     applied in source order.                                  */
+  --card-sand: #f3ede2;
+  --card-sky:  #e6f0f9;
+  --card-ice:  #f0f6ff;
+
+  /* Meta text inside cards. Figma uses #52525c here, which is
+     one hex step off Gray/600 (#52525b). Kept separate rather
+     than silently normalised — see README "Known drift".      */
+  --card-meta: #52525c;
+
+  /* --- Elevation primitives (SDS) ------------------------- */
+  --depth-0:   0px;
+  --depth-025: 1px;
+  --depth-100: 4px;
+  --black-100: rgba(12, 12, 13, 0.05);
+  --black-200: rgba(12, 12, 13, 0.10);
+
+  /* --- Shadows -------------------------------------------- */
+  --shadow-topnav:
+    var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-200),
+    var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-100);
+
+  --shadow-btn-primary-hover:
+    0px 2px 8px 0px rgba(0, 0, 0, 0.25),
+    var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-100);
+
+  --shadow-btn-secondary-hover: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  --shadow-photo:
+    10px 16px 104px 0px rgba(4, 9, 31, 0.15),
+    var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-200),
+    var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-100);
+
+  /* --- Radii ---------------------------------------------- */
+  --radius-8:  8px;   /* buttons */
+  --radius-12: 12px;  /* images inside cards */
+  --radius-16: 16px;  /* top nav, project cards */
+  --radius-24: 24px;  /* work section, photo frame */
+
+  /* --- Typeface families ---------------------------------- */
+  --font-display: "REM", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* --- Type scale (family / weight / size / line-height) --- */
+  /* Header/h1 */
+  --h1-size: 60px;   --h1-line: 60px;   --h1-weight: 700;
+  /* Card headline (raw values in Figma, no named style) */
+  --h2-size: 40px;   --h2-line: 64px;   --h2-weight: 700;
+  /* Header/h3 */
+  --h3-size: 36px;   --h3-line: 40px;   --h3-weight: 700;
+  /* Header/h4 */
+  --h4-size: 28px;   --h4-line: 44px;   --h4-weight: 700;
+  /* Card sub-heading "Project uitkomst" */
+  --h5-size: 20px;   --h5-line: 32px;   --h5-weight: 700;
+  /* Text/Intro/semibold */
+  --intro-size: 24px; --intro-line: 38px; --intro-weight: 600;
+  /* Text/Button/Regular */
+  --btn-size: 16px;  --btn-line: 24px;  --btn-weight: 600;
+  /* Body + Text/italic */
+  --body-size: 16px; --body-line: 24px; --body-weight: 400;
+
+  /* --- Layout --------------------------------------------- */
+  /* Widths measured off the Figma frames. The shell caps and
+     centres, so viewports above 1440px keep content centred.  */
+  --shell-max: 1216px;   /* top nav + work section, desktop    */
+  --prose-max: 1076px;   /* hero + about body, desktop         */
+  --footer-max: 1296px;  /* 1440 frame minus 72px padding × 2  */
+
+  --pad-mobile: 16px;
+  --pad-tablet: 32px;
+  --pad-desktop: 112px;
+
+  /* --- Motion --------------------------------------------- */
+  /* Kept under the 400ms Doherty threshold so feedback reads
+     as instant rather than as a wait.                         */
+  --transition-fast: 150ms;
+  --transition-page: 200ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Focus ---------------------------------------------- */
+  /* NOT in the Figma file. Added for keyboard accessibility;
+     derived from Blue/900. See README "Additions".            */
+  --focus-ring: var(--blue-900);
+  --focus-width: 3px;
+  --focus-offset: 2px;
+}

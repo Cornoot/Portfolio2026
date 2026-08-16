@@ -1,0 +1,138 @@
+/* ============================================================
+   base.css — reset, typography, layout shells, page transition
+   ============================================================ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: var(--body-weight);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+/* --- Skip link -------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--gray-900);
+  color: var(--gray-0);
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  padding: 10px 16px;
+  border-radius: var(--radius-8);
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+/* --- Focus ------------------------------------------------- */
+/* Not specified in Figma. Required for keyboard operation. */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-8);
+}
+
+/* --- Typography -------------------------------------------- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  color: var(--gray-900);
+  margin: 0;
+}
+
+h1 { font-size: var(--h1-size); line-height: var(--h1-line); font-weight: var(--h1-weight); }
+h2 { font-size: var(--h2-size); line-height: var(--h2-line); font-weight: var(--h2-weight); }
+h3 { font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--h3-weight); }
+h4 { font-size: var(--h4-size); line-height: var(--h4-line); font-weight: var(--h4-weight); }
+h5 { font-size: var(--h5-size); line-height: var(--h5-line); font-weight: var(--h5-weight); }
+
+p { margin: 0; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--gray-600);
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: var(--intro-size);
+  line-height: var(--intro-line);
+  font-weight: var(--intro-weight);
+  color: var(--gray-700);
+}
+
+/* --- Shells ------------------------------------------------ */
+/* Both cap and centre, which keeps content centred on any
+   viewport wider than the 1440px desktop frame.               */
+.shell {
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-mobile);
+}
+
+.prose-shell {
+  max-width: var(--prose-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-mobile);
+}
+
+/* --- Page transition --------------------------------------- */
+/* Cross-document View Transitions. Browsers without support
+   navigate instantly and unbroken — nothing is blocked on JS. */
+@view-transition { navigation: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: none; }
+  ::view-transition-new(root) {
+    animation: fade-from-white var(--transition-page) var(--ease);
+  }
+}
+
+@keyframes fade-from-white {
+  from { opacity: 0; background-color: var(--gray-0); }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
+/* ============================================================
+   Breakpoints — taken from the Figma frame widths:
+   Mobile 375 · Tablet 768 · Desktop 1440
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .shell { padding-inline: var(--pad-tablet); }
+  .prose-shell { padding-inline: var(--pad-tablet); }
+}
+
+@media (min-width: 1200px) {
+  .shell { padding-inline: 0; }
+  .prose-shell { padding-inline: 0; }
+}
+
+/* Mobile type sizes measured off the mobile frames. */
+@media (max-width: 767px) {
+  h1 { font-size: 40px; line-height: 60px; }
+  h2 { font-size: 28px; line-height: 40px; }
+  h3 { font-size: 28px; line-height: 44px; }
+  .intro { font-size: 20px; line-height: 38px; }
+}
