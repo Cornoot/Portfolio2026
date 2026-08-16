@@ -8,7 +8,7 @@ hero:
   heading: "Ik ben Corné"
   intro: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2C ervaringen."
   ctaLabel: "Leer mij beter kennen"
-  ctaHref: "/about.html"
+  ctaHref: "about.html"
   image:
     src: "portret-hero.jpg"
     alt: "Corné van den Boogert, glimlachend op een pad met groen op de achtergrond"

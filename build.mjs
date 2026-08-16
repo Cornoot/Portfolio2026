@@ -26,7 +26,7 @@ const inline = (s = "") => marked.parseInline(String(s));
 function img(image, { className = "", lazy = true } = {}) {
   if (!image?.src) return "";
   const loading = lazy ? ' loading="lazy" decoding="async"' : ' decoding="async"';
-  return `<img src="/assets/images/${esc(image.src)}" alt="${esc(image.alt)}"`
+  return `<img src="assets/images/${esc(image.src)}" alt="${esc(image.alt)}"`
        + ` width="${esc(image.width)}" height="${esc(image.height)}"`
        + (className ? ` class="${className}"` : "")
        + `${loading}>`;
