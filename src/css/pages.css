@@ -28,10 +28,10 @@
    peeks out behind the "Uitgelicht werk" card that overlaps it
    (see .work's negative margin). The about hero has no card
    sitting on top of it afterwards, so it stays flush.
-   The extra length here (160px) is bigger than the card's
-   overlap (96px, in components.css), leaving a visible strip
-   of pure colour as breathing room before the card begins.     */
-.hero-band--overlap { bottom: -160px; }
+   96px of tail, only 24px of which the card overlaps (see
+   .work in components.css) — leaving a clean 72px gap of pure
+   colour as breathing room before the card begins.              */
+.hero-band--overlap { bottom: -96px; }
 
 .hero-band--home    { background: var(--hero-mint); }
 .hero-band--about   { background: var(--hero-lavender); }
@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 72px 72px 104px;
+  padding: 72px;
 }
 
 .hero__text {
