@@ -176,16 +176,18 @@
 }
 
 /* --- Photo grid ---------------------------------------------- */
-/* Ratios are preserved per breakpoint via aspect-ratio, so the
-   grid never crops differently than the design intends.         */
+/* Figma treats each slot as a fixed-size frame with "clip
+   content" on: the photo is cropped to fill its slot, the slot
+   size never bends to fit the photo. Track sizes below are the
+   exact Figma numbers per breakpoint; object-fit:cover on the
+   img does the actual cropping.                                 */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  align-items: start;
+  overflow: hidden;
 }
 
-.photo-grid figure { margin: 0; }
+.photo-grid__item { margin: 0; border-radius: var(--radius-12); overflow: hidden; }
 
 .photo-grid img {
   width: 100%;
@@ -194,23 +196,44 @@
   border-radius: var(--radius-12);
 }
 
-.photo-grid__item { border-radius: var(--radius-12); overflow: hidden; }
+/* Desktop: 3 columns × 2 rows. Trouwfoto spans both rows. */
+.photo-grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 312px);
+  grid-template-areas: "a b c" "d b e";
+  height: 640px;
+}
+.photo-grid__item:nth-child(1) { grid-area: a; } /* Miauwmiauws */
+.photo-grid__item:nth-child(2) { grid-area: b; } /* Trouwfoto   */
+.photo-grid__item:nth-child(3) { grid-area: c; } /* Moose       */
+.photo-grid__item:nth-child(4) { grid-area: d; } /* Meme        */
+.photo-grid__item:nth-child(5) { grid-area: e; } /* Bass        */
 
-/* Desktop: middle image is a tall portrait spanning two rows. */
-.photo-grid__item--tall { grid-row: span 2; aspect-ratio: 348 / 653; }
-.photo-grid__item--square { aspect-ratio: 348 / 312; }
-.photo-grid__item--bass { aspect-ratio: 348 / 348; }
-
+/* Tablet: 2 columns × 3 rows. Trouwfoto spans the top two rows. */
 @media (max-width: 1023px) {
-  .photo-grid { grid-template-columns: repeat(2, 1fr); }
-  .photo-grid__item--tall { aspect-ratio: 344 / 640; }
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 312px);
+    grid-template-areas: "a b" "c b" "d e";
+    height: 968px;
+  }
 }
 
+/* Mobile: single column, each photo keeps its own ratio —
+   no clipping needed since there's no row to align against. */
 @media (max-width: 767px) {
-  .photo-grid { grid-template-columns: 1fr; }
-  .photo-grid__item--tall { grid-row: auto; aspect-ratio: 329 / 640; }
-  .photo-grid__item--square { aspect-ratio: 329 / 312; }
-  .photo-grid__item--bass { aspect-ratio: 1 / 1; }
+  .photo-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: none;
+    height: auto;
+    overflow: visible;
+  }
+  .photo-grid__item:nth-child(1) { grid-area: auto; aspect-ratio: 329 / 312; }
+  .photo-grid__item:nth-child(2) { grid-area: auto; aspect-ratio: 329 / 640; }
+  .photo-grid__item:nth-child(3) { grid-area: auto; aspect-ratio: 329 / 312; }
+  .photo-grid__item:nth-child(4) { grid-area: auto; aspect-ratio: 329 / 312; }
+  .photo-grid__item:nth-child(5) { grid-area: auto; aspect-ratio: 1 / 1; }
 }
 
 /* --- Closing block ------------------------------------------- */
