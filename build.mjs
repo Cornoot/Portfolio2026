@@ -38,9 +38,9 @@ function renderHome(data) {
 
   const hero = `
     <section class="surface--hero">
-      <div class="prose-shell">
-        <div class="hero-wrap">
-          <div class="hero-band hero-band--home hero-band--overlap"></div>
+      <div class="hero-wrap">
+        <div class="hero-band hero-band--home hero-band--overlap"></div>
+        <div class="prose-shell">
           <div class="hero">
             <div class="hero__text">
               <div class="hero__lines">
@@ -114,13 +114,15 @@ function renderAbout(data, body) {
   const intro = `
         <div class="hero-wrap">
           <div class="hero-band hero-band--about"></div>
-          <div class="about__intro">
-            <div class="about__intro-text">
-              <h1>${inline(a.heading)}</h1>
-              <p class="intro">${inline(a.intro)}</p>
-            </div>
-            <div class="about__portrait">
-              <div class="photo-frame">${img(a.portrait, { lazy: false })}</div>
+          <div class="prose-shell">
+            <div class="about__intro">
+              <div class="about__intro-text">
+                <h1>${inline(a.heading)}</h1>
+                <p class="intro">${inline(a.intro)}</p>
+              </div>
+              <div class="about__portrait">
+                <div class="photo-frame">${img(a.portrait, { lazy: false })}</div>
+              </div>
             </div>
           </div>
         </div>`;
@@ -180,9 +182,9 @@ ${gallery}
 
   return `
     <section class="surface--hero">
-      <div class="prose-shell">
-        <div class="about">
 ${intro}
+      <div class="prose-shell">
+        <div class="about about--after-hero">
 ${sections}
 ${experience}
 ${leisure}

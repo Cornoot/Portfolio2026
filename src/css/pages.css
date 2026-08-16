@@ -26,8 +26,11 @@
 /* Only the home hero needs to bleed further down: its tail
    peeks out behind the "Uitgelicht werk" card that overlaps it
    (see .work's negative margin). The about hero has no card
-   sitting on top of it afterwards, so it stays flush.          */
-.hero-band--overlap { bottom: -96px; }
+   sitting on top of it afterwards, so it stays flush.
+   The extra length here (160px) is bigger than the card's
+   overlap (96px, in components.css), leaving a visible strip
+   of pure colour as breathing room before the card begins.     */
+.hero-band--overlap { bottom: -160px; }
 
 .hero-band--home    { background: var(--hero-mint); }
 .hero-band--about   { background: var(--hero-lavender); }
@@ -79,7 +82,7 @@
    from collapsing through and shifting this section's own
    background — without it the grey bg would shift up and
    hide the mint peeking out behind the card.                   */
-.surface--hero { background: var(--gray-0); }
+.surface--hero { background: var(--gray-0); display: flow-root; }
 .surface--work { background: var(--gray-50); padding-bottom: 96px; display: flow-root; }
 
 /* --- About -------------------------------------------------- */
@@ -89,6 +92,10 @@
   gap: 72px;
   padding-block: 72px;
 }
+/* Used when the intro lives in its own hero-wrap above, so this
+   block only holds the sections after it — restores the same
+   72px rhythm the flex gap gives everywhere else.               */
+.about--after-hero { padding-top: 0; margin-top: 72px; }
 
 .about__intro {
   position: relative;
