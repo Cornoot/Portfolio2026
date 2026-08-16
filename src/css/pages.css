@@ -3,17 +3,33 @@
    ============================================================ */
 
 /* --- Hero (home) -------------------------------------------- */
+/* Full-bleed colour block behind the hero, rounded on desktop
+   to match Figma's Rectangle 75 (home) / 76 (about).
+   No overflow-clip here: Figma's photo-frame shadow is meant
+   to bleed past the colour block's edge onto the page behind
+   it, not get cut off hard at the rounded corner.               */
+.hero-band {
+  border-radius: var(--radius-24);
+}
+.hero-band--home    { background: var(--hero-mint); }
+.hero-band--about   { background: var(--hero-lavender); }
+
+@media (max-width: 767px) {
+  .hero-band { border-radius: 0; }
+}
+
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding-block: 100px;
+  padding: 72px;
 }
 
 .hero__text {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 24px;
   max-width: 526px;
 }
@@ -28,8 +44,12 @@
 }
 
 @media (max-width: 1023px) {
-  .hero { flex-direction: column; align-items: flex-start; padding-block: 64px 48px; }
+  .hero { flex-direction: column; align-items: flex-start; padding: 48px; }
   .hero__media { align-self: center; padding-block: 24px; }
+}
+
+@media (max-width: 767px) {
+  .hero { padding: 24px; }
 }
 
 /* --- Home surfaces ------------------------------------------ */
@@ -43,7 +63,7 @@
   display: flex;
   flex-direction: column;
   gap: 72px;
-  padding-block: 100px;
+  padding-block: 72px;
 }
 
 .about__intro {
@@ -51,18 +71,23 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
+  padding: 72px;
 }
 
-.about__intro-text { display: flex; flex-direction: column; gap: 24px; max-width: 484px; }
+.about__intro-text { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 484px; }
 
 .about__section { display: flex; flex-direction: column; gap: 16px; }
 .about__section p { max-width: 75ch; }
 
 @media (max-width: 1023px) {
-  .about { gap: 56px; padding-block: 64px 48px; }
-  .about__intro { flex-direction: column; }
+  .about { gap: 56px; }
+  .about__intro { flex-direction: column; padding: 48px; }
   .about__intro-text { max-width: none; }
   .about__portrait { align-self: center; }
+}
+
+@media (max-width: 767px) {
+  .about__intro { padding: 24px; }
 }
 
 /* --- CV list ------------------------------------------------- */

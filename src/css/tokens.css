@@ -32,6 +32,10 @@
      than silently normalised — see README "Known drift".      */
   --card-meta: #52525c;
 
+  /* --- Colour: hero background blocks (Rectangle 75 / 76) - */
+  --hero-mint:     #e8f9f9;  /* home hero, behind text + photo   */
+  --hero-lavender: #f3f0ff;  /* about hero, behind intro + photo */
+
   /* --- Elevation primitives (SDS) ------------------------- */
   --depth-0:   0px;
   --depth-025: 1px;

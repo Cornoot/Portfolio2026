@@ -39,22 +39,24 @@ function renderHome(data) {
   const hero = `
     <section class="surface--hero">
       <div class="prose-shell">
-        <div class="hero">
-          <div class="hero__text">
-            <div class="hero__lines">
-              <p class="eyebrow">${inline(h.eyebrow)}</p>
-              <h1>${inline(h.heading)}</h1>
-              <p class="intro">${inline(h.intro)}</p>
+        <div class="hero-band hero-band--home">
+          <div class="hero">
+            <div class="hero__text">
+              <div class="hero__lines">
+                <p class="eyebrow">${inline(h.eyebrow)}</p>
+                <h1>${inline(h.heading)}</h1>
+                <p class="intro">${inline(h.intro)}</p>
+              </div>
+              <a class="btn btn--primary btn--icon" href="${esc(h.ctaHref)}">
+                ${inline(h.ctaLabel)}
+                <svg class="btn__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M4 10a1 1 0 011-1h8.586l-2.293-2.293a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L13.586 11H5a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                </svg>
+              </a>
             </div>
-            <a class="btn btn--primary btn--icon" href="${esc(h.ctaHref)}">
-              ${inline(h.ctaLabel)}
-              <svg class="btn__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M4 10a1 1 0 011-1h8.586l-2.293-2.293a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L13.586 11H5a1 1 0 01-1-1z" clip-rule="evenodd"/>
-              </svg>
-            </a>
-          </div>
-          <div class="hero__media">
-            <div class="photo-frame">${img(h.image, { lazy: false })}</div>
+            <div class="hero__media">
+              <div class="photo-frame">${img(h.image, { lazy: false })}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -109,13 +111,15 @@ function renderAbout(data, body) {
   const a = data.about;
 
   const intro = `
-        <div class="about__intro">
-          <div class="about__intro-text">
-            <h1>${inline(a.heading)}</h1>
-            <p class="intro">${inline(a.intro)}</p>
-          </div>
-          <div class="about__portrait">
-            <div class="photo-frame">${img(a.portrait, { lazy: false })}</div>
+        <div class="hero-band hero-band--about">
+          <div class="about__intro">
+            <div class="about__intro-text">
+              <h1>${inline(a.heading)}</h1>
+              <p class="intro">${inline(a.intro)}</p>
+            </div>
+            <div class="about__portrait">
+              <div class="photo-frame">${img(a.portrait, { lazy: false })}</div>
+            </div>
           </div>
         </div>`;
 

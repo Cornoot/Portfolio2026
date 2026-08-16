@@ -223,7 +223,11 @@
   .card { padding: 32px; }
   .card__grid,
   .card--media-first .card__grid { flex-direction: column; gap: 40px; }
-  .card__media { width: 100%; aspect-ratio: 1 / 1; }
+  /* flex: none (basis auto) lets aspect-ratio govern the height here.
+     flex: 1 0 0 (used on desktop, where the row's own height wins)
+     would otherwise collapse this to 0px tall: overflow:hidden makes
+     the browser ignore aspect-ratio when resolving a 0 flex-basis. */
+  .card__media { flex: none; width: 100%; aspect-ratio: 1 / 1; }
 }
 
 /* --- Footer -------------------------------------------------- */
