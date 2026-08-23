@@ -56,7 +56,6 @@
 
 /* --- Button / Secondary ------------------------------------- */
 .btn--secondary {
-  height: 44px;
   background: var(--bg-secondary-default);
   color: var(--text-secondary);
   border: 2px solid var(--border-primary);
@@ -126,6 +125,20 @@
   color: var(--text-inverse);
 }
 
+/* --- Header (sticky nav) --------------------------------------- */
+/* NOT in Figma — the nav pill itself is the Figma component;
+   pinning it on scroll is an addition. Transparent on purpose:
+   only the pill (which has its own opaque background) should
+   read as overlapping the page — not the header around it.
+   Padding, not margin, so the 32px/8px spacing never collapses
+   away underneath the sticky positioning.                       */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding-block: 32px 8px;
+}
+
 /* --- Top Nav ------------------------------------------------ */
 .topnav {
   max-width: var(--prose-max);
@@ -135,7 +148,6 @@
   border-radius: var(--radius-16);
   filter: drop-shadow(var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-200));
   padding: 16px 24px;
-  margin-top: 32px;
 }
 
 .topnav__inner {

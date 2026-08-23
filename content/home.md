@@ -7,7 +7,7 @@ hero:
   eyebrow: "Daar heb je 'm!"
   heading: "Ik ben Corné"
   intro: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2C ervaringen."
-  ctaLabel: "Over mij, mijn werk en mijn leven"
+  ctaLabel: "Over werk en mijn leven"
   ctaHref: "about.html"
   image:
     src: "portret-hero.jpg"
