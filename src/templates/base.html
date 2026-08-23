@@ -37,11 +37,14 @@
 <body>
   <a class="skip-link" href="#main">Direct naar de inhoud</a>
 
-  <header class="surface--hero">
+  <header>
     <div class="shell">
       <nav class="topnav" aria-label="Hoofdnavigatie">
         <div class="topnav__inner">
-          <a class="topnav__name" href="index.html">Corné van den Boogert</a>
+          <a class="topnav__brand" href="index.html">
+            <span class="logo-badge-frame" aria-hidden="true"><span class="logo-badge"><span class="logo-badge__text">C.</span></span></span>
+            <span class="topnav__name">Corné</span>
+          </a>
           <div class="topnav__actions">
             <a class="btn btn--secondary" href="about.html">Over mij</a>
             <a class="btn btn--primary" href="mailto:cornevandenboogert@hotmail.com">Contact</a>
@@ -57,20 +60,26 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__name">Corné van den Boogert</p>
+      <div class="site-footer__brand">
+        <span class="logo-badge-frame" aria-hidden="true"><span class="logo-badge"><span class="logo-badge__text">C.</span></span></span>
+        <p class="site-footer__name">Corné</p>
+      </div>
       <div class="site-footer__socials">
         <div class="site-footer__row">
           <span class="site-footer__label">Volg mij via</span>
-          <a class="btn btn--secondary" href="https://www.linkedin.com/in/corne-van-den-boogert/"
+          <a class="link" href="https://www.linkedin.com/in/corne-van-den-boogert/"
              target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn btn--secondary" href="https://www.instagram.com/cornoot/"
+          <span class="site-footer__label">,</span>
+          <a class="link" href="https://www.instagram.com/cornoot/"
              target="_blank" rel="noopener noreferrer">Instagram</a>
           <span class="site-footer__label">of stuur een</span>
-          <a class="btn btn--secondary" href="mailto:cornevandenboogert@hotmail.com">Email</a>
+          <a class="link" href="mailto:cornevandenboogert@hotmail.com">Email</a>
         </div>
         <p class="site-footer__made">Gemaakt met ❤️ en 🧀 in Gouda</p>
       </div>
     </div>
   </footer>
+
+  <script src="assets/js/reveal.js" defer></script>
 </body>
 </html>

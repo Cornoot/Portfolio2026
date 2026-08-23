@@ -2,52 +2,40 @@
    pages.css — home + about layout
    ============================================================ */
 
-/* --- Hero (home) -------------------------------------------- */
-/* --- Hero colour band ---------------------------------------
-   Figma's Rectangle 75/76 is wider than the nav/content shell
-   (72px page margin vs. the shell's 112px), so the colour
-   bleeds past the text+photo content on desktop. On tablet and
-   mobile it runs fully edge-to-edge.
-   .hero-wrap is the positioning context: the band paints behind
-   the actual hero content as an absolutely-positioned layer, so
-   it can extend further down than the content itself.          */
-.hero-wrap { position: relative; }
-
-.hero-band {
-  position: absolute;
-  inset: 0;
-  top: -38px;   /* bleeds up to the vertical middle of the ~76px nav bar */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: var(--hero-band-max);
-  border-radius: var(--radius-24);
-  z-index: 0;
+/* --- Page stack ----------------------------------------------- */
+/* Every page is a column of "cards" (hero, then one or more
+   content panels) on the shared sunken page background, each
+   8px apart — replaces the old hero-band-bleeds-behind-the-work-
+   section layering trick with plain stacked boxes.               */
+.page-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-/* Only the home hero needs to bleed further down: its tail
-   peeks out behind the "Uitgelicht werk" card that overlaps it
-   (see .work's negative margin). The about hero has no card
-   sitting on top of it afterwards, so it stays flush.
-   120px of tail, only 24px of which the card overlaps (see
-   .work in components.css) — leaving a clean 96px gap of pure
-   colour as breathing room before the card begins.              */
-.hero-band--overlap { bottom: -120px; }
 
-.hero-band--home    { background: var(--hero-mint); }
-.hero-band--about   { background: var(--hero-lavender); }
+/* --- Hero card -------------------------------------------------- */
+/* The coloured box itself. .hero (home) / .about__intro (about)
+   handle the flex layout of what's inside it.                    */
+.hero-card {
+  border-radius: var(--radius-16);
+  padding-block: 72px;
+  overflow: clip;
+}
+.hero-card--home  { background: var(--brand-50); }
+.hero-card--about {
+  background: var(--hero-lavender);
+  border-radius: var(--radius-24);
+}
 
 @media (max-width: 767px) {
-  .hero-band { max-width: none; left: 0; transform: none; border-radius: 0; }
+  .hero-card--home { padding-block: 40px; }
 }
 
 .hero {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 72px;
 }
 
 .hero__text {
@@ -68,60 +56,34 @@
 }
 
 @media (max-width: 1023px) {
-  .hero { flex-direction: column; align-items: flex-start; padding: 48px; }
+  .hero { flex-direction: column; align-items: flex-start; }
   .hero__media { align-self: center; padding-block: 24px; }
 }
-
-@media (max-width: 767px) {
-  .hero { padding: 24px; }
-}
-
-/* --- Home surfaces ------------------------------------------ */
-/* The hero sits on white; the work section on Gray/50. Both
-   run full-bleed while their content stays capped and centred.
-   flow-root prevents the work card's negative margin (below)
-   from collapsing through and shifting this section's own
-   background — without it the grey bg would shift up and
-   hide the mint peeking out behind the card.                   */
-.surface--hero { background: var(--gray-0); display: flow-root; }
-.surface--work { background: var(--gray-50); padding-bottom: 96px; display: flow-root; }
 
 /* --- About -------------------------------------------------- */
 .about {
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding-block: 72px;
+  gap: 8px;
 }
-/* Used when the intro lives in its own hero-wrap above, so this
-   block only holds the sections after it — restores the same
-   72px rhythm the flex gap gives everywhere else.               */
-.about--after-hero { padding-top: 0; margin-top: 72px; }
 
 .about__intro {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  padding: 72px;
 }
 
+.about__intro-col { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 .about__intro-text { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 484px; }
 
 .about__section { display: flex; flex-direction: column; gap: 16px; }
 .about__section p { max-width: 75ch; }
 
 @media (max-width: 1023px) {
-  .about { gap: 56px; }
-  .about__intro { flex-direction: column; padding: 48px; }
+  .about__intro { flex-direction: column; }
   .about__intro-text { max-width: none; }
   .about__portrait { align-self: center; }
-}
-
-@media (max-width: 767px) {
-  .about__intro { padding: 24px; }
 }
 
 /* --- CV list ------------------------------------------------- */
@@ -246,4 +208,5 @@
 
 /* --- Closing block ------------------------------------------- */
 .closing { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+.closing h3 { font-style: italic; }
 .closing p { max-width: 75ch; }

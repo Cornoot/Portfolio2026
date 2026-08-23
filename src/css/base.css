@@ -10,7 +10,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--gray-50);
+  background: var(--bg-sunken-primary);
   color: var(--gray-800);
   font-family: var(--font-body);
   font-size: var(--body-size);
@@ -112,6 +112,38 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
+}
+
+/* --- Page load fade-in --------------------------------------- */
+/* NOT in Figma. Plays once per document load, independent of the
+   view-transition above (which only fires on same-origin
+   navigations some browsers support).                           */
+@media (prefers-reduced-motion: no-preference) {
+  body { animation: fade-in-page var(--transition-slow) var(--ease); }
+}
+
+@keyframes fade-in-page {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Scroll reveal --------------------------------------------- */
+/* NOT in Figma. Progressive enhancement: [data-reveal] elements
+   are fully visible by default. Only once src/js/reveal.js
+   confirms IntersectionObserver support does it add
+   `has-reveal` to <html> — so if JS fails or is disabled,
+   content simply stays visible instead of getting stuck hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  html.has-reveal [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--transition-slow) var(--ease-out),
+                transform var(--transition-slow) var(--ease-out);
+  }
+  html.has-reveal [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ============================================================

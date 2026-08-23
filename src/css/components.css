@@ -22,16 +22,23 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .btn { transition: background-color var(--transition-fast) var(--ease),
-                     box-shadow var(--transition-fast) var(--ease),
-                     color var(--transition-fast) var(--ease); }
+  .btn { transition: background-color var(--transition-fast) var(--ease-out),
+                     box-shadow var(--transition-fast) var(--ease-out),
+                     color var(--transition-fast) var(--ease-out); }
 }
 
 /* Icon-bearing variants use asymmetric padding, per Figma. */
 .btn--icon { gap: 8px; padding-left: 16px; padding-right: 12px; }
 .btn--icon:hover { gap: 12px; }
 
-.btn__icon { width: 20px; height: 20px; flex-shrink: 0; }
+.btn__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* --- Button / Primary --------------------------------------- */
 .btn--primary {
@@ -50,9 +57,9 @@
 /* --- Button / Secondary ------------------------------------- */
 .btn--secondary {
   height: 44px;
-  background: var(--gray-0);
-  color: var(--gray-700);
-  border: 2px solid var(--gray-200);
+  background: var(--bg-secondary-default);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-primary);
 }
 .btn--secondary:hover {
   background: var(--gray-50);
@@ -60,17 +67,71 @@
   filter: drop-shadow(var(--shadow-btn-secondary-hover));
 }
 .btn--secondary:active {
-  background: var(--gray-0);
-  color: var(--gray-700);
+  background: var(--bg-secondary-default);
+  color: var(--text-secondary);
   filter: none;
+}
+
+/* --- Button / Tertiary --------------------------------------- */
+/* Ghost button — no fill or border. Used for the About page's
+   "Terug naar home" back link.                                  */
+.btn--tertiary {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn--tertiary:hover { background: transparent; }
+.btn--tertiary:active { background: transparent; }
+
+/* --- Link (inline text link, e.g. footer socials) ------------ */
+.link {
+  color: var(--brand-500);
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  text-decoration: underline; /* NOT in Figma's static export — added so the
+    link reads as a link without relying on colour alone. */
+}
+
+/* --- Logo mark (nav + footer) --------------------------------- */
+/* NOT bound to a Figma layout grid — the badge is rotated, so its
+   fixed-size frame keeps that rotation from nudging sibling
+   layout/alignment.                                              */
+.logo-badge-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+}
+
+.logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--brand-500);
+  border-radius: var(--radius-12);
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  transform: rotate(-2deg);
+}
+
+.logo-badge__text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 700;
+  color: var(--text-inverse);
 }
 
 /* --- Top Nav ------------------------------------------------ */
 .topnav {
-  position: relative;
-  z-index: 2;                    /* stays crisp above the hero-band bleeding up behind it */
-  background: var(--gray-0);
-  border: 1px solid var(--gray-200);
+  max-width: var(--prose-max);
+  margin-inline: auto;
+  background: var(--bg-default);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-16);
   filter: drop-shadow(var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-200));
   padding: 16px 24px;
@@ -84,8 +145,10 @@
   gap: 16px;
 }
 
+.topnav__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+
 .topnav__name {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: var(--intro-size);
   font-weight: var(--intro-weight);
   line-height: var(--intro-line);
@@ -113,7 +176,7 @@
   background: var(--gray-0);
   border-radius: var(--radius-24);
   box-shadow: var(--shadow-photo);
-  padding: 12px;
+  padding: 24px;
   max-width: 526px;
   width: 100%;
 }
@@ -126,27 +189,49 @@
 }
 
 /* --- Work section ------------------------------------------- */
-/* Pulled up into the hero-band's tail (see .hero-band--overlap's
-   -120px bottom extension), so the mint colour shows as a margin
-   around the top of this narrower, white card — matching the
-   layering in Figma, where Rectangle 75 is wider than this
-   card's shell and extends behind it. Only 24px of the 120px
-   tail is overlapped, leaving 96px of clear space above.        */
 .work {
-  position: relative;
-  z-index: 1;
-  margin-top: -24px;
-  background: var(--gray-0);
-  border-radius: var(--radius-24);
-  padding: 40px 40px 56px;
+  background: var(--bg-default);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-16);
+  padding: 80px 110px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   overflow: clip;
 }
 
+@media (max-width: 1023px) {
+  .work { padding: 72px 40px; }
+}
+
 @media (max-width: 767px) {
-  .work { padding: 16px 16px 32px; border-radius: var(--radius-16); }
+  .work { padding: 24px 16px; }
+}
+
+.work__intro { display: flex; flex-direction: column; gap: 12px; }
+.work__intro .intro { font-weight: 500; } /* Text/Intro/medium — the only spot this weight is used */
+
+/* --- About content panel -------------------------------------- */
+/* Same "surface card" idea as .work, at a wider radius per Figma
+   (About's cards use radius-24 where Home's work section uses
+   radius-16 — a genuine difference between the two pages, not
+   normalised away). Two of these stack per About page.           */
+.about__panel {
+  background: var(--bg-default);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-24);
+  padding: 80px 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+@media (max-width: 1023px) {
+  .about__panel { padding: 80px 40px; }
+}
+
+@media (max-width: 767px) {
+  .about__panel { padding: 24px 16px; }
 }
 
 /* --- Project card ------------------------------------------- */
@@ -230,7 +315,7 @@
 .card--media-first .card__grid { flex-direction: row-reverse; }
 
 @media (max-width: 767px) {
-  .card { padding: 32px; }
+  .card { padding: 32px 24px; }
   .card__grid,
   .card--media-first .card__grid { flex-direction: column; gap: 40px; }
   /* flex: none (basis auto) lets aspect-ratio govern the height here.
@@ -243,17 +328,23 @@
 /* --- Footer -------------------------------------------------- */
 .site-footer {
   background: var(--gray-100);
-  padding: 56px 72px 96px;
+  padding-block: 56px 96px;
+  padding-inline: var(--pad-mobile);
   margin-top: 96px;
 }
 
+@media (min-width: 768px) { .site-footer { padding-inline: var(--pad-tablet); } }
+@media (min-width: 1200px) { .site-footer { padding-inline: 0; } }
+
 .site-footer__inner {
-  max-width: var(--footer-max);
+  max-width: var(--prose-max);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+.site-footer__brand { display: flex; align-items: center; gap: 12px; }
 
 .site-footer__name {
   font-family: var(--font-display);
@@ -272,7 +363,14 @@
   gap: 8px;
 }
 
-.site-footer__label,
+.site-footer__label {
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  color: var(--gray-900);
+}
+
 .site-footer__made {
   font-family: var(--font-display);
   font-size: var(--btn-size);
@@ -281,10 +379,16 @@
   color: var(--gray-700);
 }
 
-.site-footer__made { display: flex; align-items: center; min-height: 44px; }
+.site-footer__made {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  width: 100%;
+  border-top: 1px solid var(--border-primary);
+  padding-top: 16px;
+}
 
 @media (max-width: 767px) {
-  .site-footer { padding: 24px 20px 64px; }
   .site-footer__name { font-size: var(--h4-size); line-height: var(--h4-line); }
   .site-footer__row { gap: 12px 8px; }
 }

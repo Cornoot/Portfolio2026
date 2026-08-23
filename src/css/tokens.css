@@ -20,6 +20,25 @@
   /* Blue/900 — used only for the Primary button hover state. */
   --blue-900: #002c50;
 
+  /* --- Colour: Brand (Figma variable group "Brand") -------- */
+  --brand-500: #008cff;  /* logo mark, inline text links (Link component) */
+  --brand-50:  #e5f4ff;  /* home hero background */
+
+  /* --- Colour: semantic aliases (Figma variable groups
+     "bg", "Text", "border") — each maps onto a Gray/Brand
+     value above; kept as separate names because Figma binds
+     components to the alias, not the raw scale.               */
+  --bg-default:           var(--gray-0);
+  --bg-secondary-default: var(--gray-0);
+  --bg-sunken-primary:    var(--gray-50);
+  --bg-primary-default:   var(--gray-900);
+  --border-primary:       var(--gray-200);
+  --border-secondary:     var(--gray-100);
+  --text-primary:         var(--gray-900);
+  --text-secondary:       var(--gray-700);
+  --text-tertiary:        var(--gray-600);
+  --text-inverse:         var(--gray-0);
+
   /* --- Colour: card surfaces ------------------------------ */
   /* Raw hex in Figma (not variables). One per project card,
      applied in source order.                                  */
@@ -32,10 +51,10 @@
      than silently normalised — see README "Known drift".      */
   --card-meta: #52525c;
 
-  /* --- Colour: hero background blocks (Rectangle 75 / 76) - */
-  --hero-mint:     #e8f9f9;  /* home hero, behind text + photo   */
-  --hero-lavender: #f3f0ff;  /* about hero, behind intro + photo */
-  --hero-band-max: 1296px;   /* Figma: 1440 canvas minus 72px margin each side — wider than the 1216px shell */
+  /* --- Colour: hero background (About only) ---------------- */
+  /* Raw hex in Figma (not a variable) — home hero now uses
+     Brand/50 above instead of a bespoke colour.                */
+  --hero-lavender: #f3f0ff;
 
   /* --- Colour: CV row backgrounds (node 3218:9735) --------- */
   --cv-row-1: #ebf6ff;
@@ -97,20 +116,23 @@
   /* --- Layout --------------------------------------------- */
   /* Widths measured off the Figma frames. The shell caps and
      centres, so viewports above 1440px keep content centred.  */
-  --shell-max: 1216px;   /* top nav + work section, desktop    */
-  --prose-max: 1076px;   /* hero + about body, desktop         */
-  --footer-max: 1296px;  /* 1440 frame minus 72px padding × 2  */
+  --shell-max: 1296px;   /* work section, about content cards, desktop */
+  --prose-max: 1076px;   /* hero content, top nav, footer inner, desktop */
 
   --pad-mobile: 16px;
   --pad-tablet: 32px;
-  --pad-desktop: 112px;
 
   /* --- Motion --------------------------------------------- */
   /* Kept under the 400ms Doherty threshold so feedback reads
      as instant rather than as a wait.                         */
-  --transition-fast: 150ms;
+  --transition-fast: 300ms;
   --transition-page: 200ms;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* buttons — same in and out of hover */
+
+  /* NOT in Figma. Page-load fade-in and scroll-reveal — slower
+     and gentler than the button/page-nav transitions above.     */
+  --transition-slow: 500ms;
 
   /* --- Focus ---------------------------------------------- */
   /* NOT in the Figma file. Added for keyboard accessibility;

@@ -7,7 +7,7 @@ hero:
   eyebrow: "Daar heb je 'm!"
   heading: "Ik ben Corné"
   intro: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2C ervaringen."
-  ctaLabel: "Leer mij beter kennen"
+  ctaLabel: "Over mij, mijn werk en mijn leven"
   ctaHref: "about.html"
   image:
     src: "portret-hero.jpg"
@@ -16,6 +16,7 @@ hero:
     height: 521
 
 sectionTitle: "Uitgelicht werk"
+sectionIntro: "Ik heb gewerkt als de enige product designer bij een start up, scale up en met meerdere designers bij agencies en inhouse bij SaaS bedrijven. Voor mij blijft er altijd maar één ding belangrijk: het product moet altijd reete goed zijn."
 
 projects:
   - company: "Dialog"
