@@ -166,5 +166,6 @@ p { margin: 0; }
   h1 { font-size: 40px; line-height: 60px; }
   h2 { font-size: 28px; line-height: 40px; }
   h3 { font-size: 28px; line-height: 44px; }
-  .intro { font-size: 20px; line-height: 38px; }
+  /* .intro heeft hier geen override meer: 20/32 geldt op elk
+     breekpunt. */
 }

@@ -106,8 +106,13 @@
   --h4-size: 28px;   --h4-line: 44px;   --h4-weight: 700;
   /* Card sub-heading "Project uitkomst" */
   --h5-size: 20px;   --h5-line: 32px;   --h5-weight: 700;
-  /* Text/Intro/semibold */
-  --intro-size: 24px; --intro-line: 38px; --intro-weight: 600;
+  /* Text/Intro/semibold. In Figma staat deze stijl op 24/38; op de
+     site is de intro-tekst zelf naar 20/32 geschaald. Controleer of
+     Figma nog bijgewerkt moet worden. */
+  --intro-size: 20px; --intro-line: 32px; --intro-weight: 600;
+  /* De naam in de top nav gebruikte dezelfde stijl en blijft op de
+     originele 24/38 staan — daarom een eigen paar. */
+  --topnav-name-size: 24px; --topnav-name-line: 38px;
   /* Text/Button/Regular */
   --btn-size: 16px;  --btn-line: 24px;  --btn-weight: 600;
   /* Body + Text/italic */

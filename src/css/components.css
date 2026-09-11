@@ -161,9 +161,9 @@ header {
 
 .topnav__name {
   font-family: var(--font-display);
-  font-size: var(--intro-size);
+  font-size: var(--topnav-name-size);
   font-weight: var(--intro-weight);
-  line-height: var(--intro-line);
+  line-height: var(--topnav-name-line);
   color: var(--gray-800);
   text-decoration: none;
   white-space: nowrap;
