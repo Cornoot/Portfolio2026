@@ -20,6 +20,12 @@ const esc = (s = "") =>
 /* Inline markdown (bold/italic/links) without wrapping <p>. */
 const inline = (s = "") => marked.parseInline(String(s));
 
+/* Same, but a newline inside the string becomes a <br> — a soft
+   line break, not a new paragraph. The quotes in "Wat mensen over
+   mij zeggen" use both, and the difference is visible in Figma. */
+const inlineLines = (s = "") =>
+  String(s).trim().split("\n").map((l) => inline(l.trim())).join("<br>");
+
 /* ---------- image helper --------------------------------------
    Every image carries intrinsic width/height so the browser
    reserves space and layout shift stays at zero.               */
@@ -122,11 +128,50 @@ function renderHome(data) {
 ${cards}
         </div>`;
 
+  /* figure/blockquote/figcaption so each quote keeps its attribution
+     attached — a screen reader announces the name with the quote
+     rather than as a loose paragraph after it. The avatar is
+     decorative (alt=""): the name sits right next to it. */
+  const voices = (data.voices || []).map((v) => {
+    const paras = (v.quote || [])
+      .map((q) => `<p>${inlineLines(q)}</p>`).join("\n              ");
+
+    const avatar = v.avatar
+      ? img(v.avatar, { className: "voice__avatar" })
+      : "";
+
+    return `
+          <figure class="voice" data-reveal>
+            <blockquote class="voice__quote">
+              ${paras}
+            </blockquote>
+            <figcaption class="voice__author">
+              ${avatar}
+              <div class="voice__who">
+                <p class="voice__name">${inline(v.name)}</p>
+                <p class="voice__role">${inline(v.role)}</p>
+              </div>
+            </figcaption>
+          </figure>`;
+  }).join("\n");
+
+  const voicesSection = (data.voices || []).length ? `
+        <div class="voices">
+          <div class="voices__intro">
+            <h3>${inline(data.voicesTitle)}</h3>
+            <p class="intro">${inline(data.voicesIntro)}</p>
+          </div>
+          <div class="voices__list">
+${voices}
+          </div>
+        </div>` : "";
+
   return `
     <div class="shell">
       <div class="page-stack">
 ${hero}
 ${work}
+${voicesSection}
       </div>
     </div>`;
 }

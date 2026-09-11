@@ -11,6 +11,15 @@ anders klopt de gereserveerde ruimte niet en krijg je layout shift.
 | `dialog-dashboard.png` | 516 x 503 | 3218:10002 |
 | `design-system.png` | 516 x 523 | 3218:10005 |
 | `moreapp.png` | 516 x 551 | 3218:10034 |
+| `avatar-anke-smilde.png` | 48 x 48 | -- |
+| `avatar-simon-van-acht.png` | 48 x 48 | -- |
+
+De twee avatars bij "Wat mensen over mij zeggen" staan er nu op 48 x 48,
+uitgesneden uit een export van het ontwerp. Dat is precies de weergave-
+grootte, dus op een retina-scherm ogen ze zacht. Exporteer ze op 2x
+(96 x 96) uit Figma en overschrijf de bestanden -- `width` en `height`
+in `content/home.md` blijven 48. Het derde citaat (Ryan Graute) heeft in
+het ontwerp geen portret; laat `avatar` daar gewoon weg.
 
 ## About
 | Bestand | Verhouding | Node in Figma |

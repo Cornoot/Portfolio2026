@@ -112,6 +112,14 @@
   --btn-size: 16px;  --btn-line: 24px;  --btn-weight: 600;
   /* Body + Text/italic */
   --body-size: 16px; --body-line: 24px; --body-weight: 400;
+  /* Testimonial quote — raw values in Figma, no named style. Same
+     16px as body but on a 28px line, so a long quote stays airy. */
+  --quote-size: 16px; --quote-line: 28px;
+  /* Testimonial attribution. The name reuses the h5 style above
+     (20/32); only the role needs its own pair. Together they make
+     48px — exactly the height of the portrait beside them, which
+     is what sets the height of a quote with no portrait. */
+  --voice-role-size: 12px; --voice-role-line: 16px;
 
   /* --- Layout --------------------------------------------- */
   /* Widths measured off the Figma frames. The shell caps and

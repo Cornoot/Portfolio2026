@@ -201,7 +201,12 @@ header {
 }
 
 /* --- Work section ------------------------------------------- */
-.work {
+/* .voices ("Wat mensen over mij zeggen") is the same white surface
+   at the same paddings — in Figma the two panels stack as
+   identical siblings, so they share one rule rather than drifting
+   apart later. Only what sits inside them differs.              */
+.work,
+.voices {
   background: var(--bg-default);
   border: 1px solid var(--border-secondary);
   border-radius: var(--radius-16);
@@ -213,15 +218,19 @@ header {
 }
 
 @media (max-width: 1023px) {
-  .work { padding: 72px 40px; }
+  .work,
+  .voices { padding: 72px 40px; }
 }
 
 @media (max-width: 767px) {
-  .work { padding: 24px 16px; }
+  .work,
+  .voices { padding: 24px 16px; }
 }
 
-.work__intro { display: flex; flex-direction: column; gap: 12px; }
-.work__intro .intro { font-weight: 500; } /* Text/Intro/medium — the only spot this weight is used */
+.work__intro,
+.voices__intro { display: flex; flex-direction: column; gap: 12px; }
+.work__intro .intro,
+.voices__intro .intro { font-weight: 500; } /* Text/Intro/medium — the only spot this weight is used */
 
 /* --- About content panel -------------------------------------- */
 /* Same "surface card" idea as .work, at a wider radius per Figma
@@ -335,6 +344,72 @@ header {
      would otherwise collapse this to 0px tall: overflow:hidden makes
      the browser ignore aspect-ratio when resolving a 0 flex-basis. */
   .card__media { flex: none; width: 100%; aspect-ratio: 1 / 1; }
+}
+
+/* --- Testimonial card ---------------------------------------- */
+/* "Wat mensen over mij zeggen". All three cards share one surface
+   colour (no per-card colour like the project cards) and sit 16px
+   apart — tighter than the 24px between project cards, so the
+   quotes read as one list rather than three separate blocks.    */
+.voices__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.voice {
+  margin: 0;
+  background: var(--card-ice);
+  border-radius: var(--radius-16);
+  padding: 32px;
+}
+
+/* Paragraph gap equals one line of the quote, which is how the
+   blank line between paragraphs is set in Figma. */
+.voice__quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--quote-line);
+}
+
+.voice__quote p {
+  font-size: var(--quote-size);
+  line-height: var(--quote-line);
+  color: var(--text-secondary);
+}
+
+/* Not every quote has a portrait — Ryan Graute's has none in
+   Figma, and the name then simply starts at the padding edge. */
+.voice__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.voice__avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.voice__who { display: flex; flex-direction: column; }
+
+.voice__name {
+  font-family: var(--font-display);
+  font-size: var(--h5-size);
+  line-height: var(--h5-line);
+  font-weight: var(--h5-weight);
+  color: var(--text-primary);
+}
+
+.voice__role {
+  font-size: var(--voice-role-size);
+  line-height: var(--voice-role-line);
+  color: var(--text-tertiary);
 }
 
 /* --- Footer -------------------------------------------------- */

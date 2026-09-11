@@ -73,4 +73,36 @@ projects:
       alt: "De herontworpen MoreApp formulier-interface"
       width: 516
       height: 551
+
+voicesTitle: "Wat mensen over mij zeggen"
+voicesIntro: "Tijdens mijn carriere heb ik al het geluk gehad om met meerdere mensen te mogen werken, dit is hun ervaring om met mij samen te werken"
+
+voices:
+  - name: "Anke Smilde"
+    role: "Head of Product"
+    avatar:
+      src: "avatar-anke-smilde.png"
+      alt: ""
+      width: 48
+      height: 48
+    quote:
+      - "Je wilt een Corné als Product Designer in je team! Hij spreekt klanten en doet onderzoek om uit te vogelen wat klanten écht willen en ontwerpt met scherp oog voor detail. Bij Dialog is hij de aanjager geweest van de opzet van een heel sterk design system. Daarnaast is Corné altijd een paar stappen vooruit in hoe hij het product en zichzelf beter kan maken, daarmee voor een leidinggevende een heel fijne sparringpartner"
+
+  - name: "Simon van Acht"
+    role: "Design Mentor, Freelance Designer"
+    avatar:
+      src: "avatar-simon-van-acht.png"
+      alt: ""
+      width: 48
+      height: 48
+    quote:
+      - |
+        Corné is zo'n designer die je eraan herinnert waarom je zelf ooit begon met ontwerpen. Hij werkt met aandacht en is kritisch op zijn eigen werk. En hij staat altijd open voor feedback. Niet uit onzekerheid, maar omdat hij wil groeien. Het is knap hoe snel hij ideeën weet te vangen in een schets of prototype. Daarmee zet hij zijn collega's aan het denken en laat hij zien wat er mogelijk is. Corné ziet hoe belangrijk groepsdynamiek is voor goed werk. Hij zet zich daar actief voor in. Niet alleen met woorden, maar ook in zijn manier van samenwerken. Vanuit rust, ruimte en scherpe vragen.
+        Als design mentor heb ik Corné mogen begeleiden en zien groeien in zijn rol. Door zijn openheid en doorzettingsvermogen heeft hij gelukkig het plezier in ontwerpen zelf teruggevonden.
+
+  - name: "Ryan Graute"
+    role: "IT Engineer, NS"
+    quote:
+      - "Als softwareontwikkelaar heb ik met Corné samengewerkt, en dat heb ik als heel prettig ervaren. Corné is een UX designer die zijn werk serieus neemt. Hij baseert zijn antwoorden niet op een gevoel of door er iets uit zijn mouw te schudden. Door onderzoek te doen bij gebruikers weet hij precies wat goed werkt voor hen en wat niet. Door dit in kaart te brengen kan hij zijn designs gebruiksvriendelijker maken en bij elke pixel redeneren waarom die er staat en zo gevormd is voor de gebruiker."
+      - "Dat was goed terug te zien bij het nieuwe design van het product. Er was bewust gekozen voor grotere elementen, zodat gebruikers in de bouw de app met handschoenen aan kunnen bedienen, in plaats van een design met kleinere knoppen waarbij een misdruk veel sneller plaatsvindt. Bij het realiseren van een feature kan Corné mijn vragen als ontwikkelaar altijd beantwoorden. Mist er toch een situatie die kan optreden in het product, dan gaat hij terug naar de tekentafel om tot de beste oplossing voor de gebruiker te komen."
 ---
