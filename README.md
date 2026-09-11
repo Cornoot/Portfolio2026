@@ -87,13 +87,13 @@ Deze zijn overgenomen zoals ze zijn, niet stilletjes gladgestreken:
 - **Marges op tablet** — de top nav houdt 72px aan, de content 32px.
 - **"Over mij"** ontbreekt in de nav op tablet en mobiel. De enige route
   naar de about-pagina is daar de hero-knop "Leer mij beter kennen".
-- **Panelen op tablet en mobiel** — in Figma lopen de witte panelen
-  daar van rand tot rand; in de code houden ze de marge van `.shell`
-  aan, net als elk ander paneel op de pagina. Daardoor zijn de kaarten
-  in “Wat mensen over mij zeggen” op tablet 622px in plaats van 685px,
-  en op mobiel 309px in plaats van 339px, en lopen de citaten over meer
-  regels dan in het ontwerp. Dit gold al voor de werk-sectie en is dus
-  niet nieuw.
+- **Panelen op tablet** — in Figma lopen de witte panelen daar van
+  rand tot rand; in de code houden ze de 32px marge van `.shell` aan.
+  Daardoor zijn de kaarten in “Wat mensen over mij zeggen” op tablet
+  622px in plaats van 689px en lopen de citaten over meer regels dan in
+  het ontwerp. Op mobiel is dit wél rechtgetrokken (zie
+  `main .shell` in `src/css/base.css`); dezelfde twee regels toepassen
+  op de tablet-breekpunt lost het daar ook op.
 - **Ruimte onder de sectie-intro** — Figma houdt ~32px aan tussen de
   intro en de eerste kaart, de code 24px. `.work` en `.voices` delen die
   regel, dus ze wijken samen af. Wil je exact het ontwerp volgen, zet de

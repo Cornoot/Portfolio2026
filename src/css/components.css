@@ -396,6 +396,12 @@ header {
   object-fit: cover;
 }
 
+/* Op mobiel zakt de kaartpadding naar 24px, gelijk aan de
+   projectkaarten daar. Desktop en tablet houden 32px. */
+@media (max-width: 767px) {
+  .voice { padding: 24px; }
+}
+
 .voice__who { display: flex; flex-direction: column; }
 
 .voice__name {

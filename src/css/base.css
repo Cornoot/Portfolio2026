@@ -161,6 +161,26 @@ p { margin: 0; }
   .prose-shell { padding-inline: 0; }
 }
 
+/* Op mobiel lopen de panelen van rand tot rand, zoals in Figma: de
+   hero, de werk-sectie, de citaten en de about-panelen raken de
+   schermrand en zetten hun eigen binnenmarge. De top nav staat
+   buiten <main> en houdt daarom zijn 16px marge.
+   .prose-shell zit alleen in de hero-kaarten en levert daar de 24px
+   die het ontwerp binnen die kaart aanhoudt. */
+@media (max-width: 767px) {
+  main .shell { padding-inline: 0; }
+  .prose-shell { padding-inline: 24px; }
+
+  /* Figma tekent de rand binnen het paneel zonder dat die ruimte
+     kost; CSS trekt 'm van de breedte af. Links en rechts valt de
+     rand nu samen met de schermrand en scheidt daar niets meer, dus
+     weg ermee — zo klopt de binnenbreedte weer met het ontwerp.
+     Boven en onder blijft de rand staan: die scheidt de panelen. */
+  main .work,
+  main .voices,
+  main .about__panel { border-inline: 0; }
+}
+
 /* Mobile type sizes measured off the mobile frames. */
 @media (max-width: 767px) {
   h1 { font-size: 40px; line-height: 60px; }

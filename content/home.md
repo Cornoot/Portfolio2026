@@ -88,6 +88,18 @@ voices:
     quote:
       - "Je wilt een Corné als Product Designer in je team! Hij spreekt klanten en doet onderzoek om uit te vogelen wat klanten écht willen en ontwerpt met scherp oog voor detail. Bij Dialog is hij de aanjager geweest van de opzet van een heel sterk design system. Daarnaast is Corné altijd een paar stappen vooruit in hoe hij het product en zichzelf beter kan maken, daarmee voor een leidinggevende een heel fijne sparringpartner"
 
+  - name: "Mary Wolf"
+    role: "Product Owner, Dialog"
+    avatar:
+      src: "avatar-mary-wolf.png"
+      alt: ""
+      width: 48
+      height: 48
+    quote:
+      - "As a Product Owner, I couldn’t wish for a better designer to work with. What I particularly appreciate about working with Corné is that he doesn’t just jump straight into designing a solution. Instead, he thinks critically about the problem first, asks the right questions and makes sure we’ve considered the edge cases before committing to a direction. At the same time, he knows when not to overthink things and can be very pragmatic and ad hoc when the situation calls for it."
+      - "He has a great eye for detail and doesn’t settle for a “good enough” solution when there’s an opportunity to make something genuinely better. He’s also very close to the customer and consistently thinks from the user’s perspective. Even when we need to cut scope, he makes sure we don’t remove anything that’s crucial to the user flow or experience."
+      - "I really value our close collaboration as Product and Design. Corné challenges my thinking, spots things I might have missed and is always willing to explore a problem together rather than simply taking a requirement and turning it into a design. He cares just as much about the bigger picture as he does about the tiny details, which makes him a fantastic partner to have in the product team."
+
   - name: "Simon van Acht"
     role: "Design Mentor, Freelance Designer"
     avatar:
