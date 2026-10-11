@@ -16,14 +16,14 @@ hero:
     height: 521
 
 sectionTitle: "Uitgelicht werk"
-sectionIntro: "Ik heb gewerkt als de enige product designer bij een start up, scale up en met meerdere designers bij agencies en inhouse bij SaaS bedrijven. Voor mij blijft er altijd maar één ding belangrijk: het product moet altijd reete goed zijn."
+sectionIntro: "Ik heb de afgelopen jaren veel ervaring opgedaan als UX designer in verschillende settings: zo werkte ik als de enige product designer bij een start-up en een scale-up. Ik werkte met meerdere designers bij agencies en inhouse bij SaaS-bedrijven. Uiteindelijk is er voor mij één ding belangrijk: het product waaraan ik werk moet retegoed zijn!"
 
 projects:
   - company: "Dialog"
     period: "Sept. 2025 - Dec. 2025"
-    title: "Alles wat je moet doen, op 1 plek"
+    title: "Al je taken op 1 plek"
     body: "Dialog is een online product waarmee managers hun werk versnellen door in te zetten op people management. Het product was complex en miste een duidelijk startpunt voor de werkdag. Hiervoor heb ik het manager dashboard ontworpen, met alle taken overzichtelijk uitgelijnd per gebruiker."
-    outcomeTitle: "Project uitkomst"
+    outcomeTitle: "Projectuitkomsten"
     outcomes:
       - "Positieve impact op de pNPS van Dialog"
       - "Orde in de chaos van het product"
@@ -41,11 +41,11 @@ projects:
   - company: "Dialog"
     period: "Sept. 2025 - heden"
     title: "Één systeem, consistent in elk scherm"
-    body: "Toen ik startte bij Dialog was er nog geen design systeem. Componenten zoals knoppen werden telkens opnieuw met de hand gebouwd, wat zorgde voor inconsistentie door het hele product heen. Samen met het development team heb ik een systematische aanpak neergezet, wat resulteerde in een snelle, iteratieve workflow tussen UX en development."
-    outcomeTitle: "Project uitkomst"
+    body: "Toen ik startte bij Dialog was er nog geen design systeem. Componenten zoals knoppen werden steeds opnieuw met de hand gebouwd, wat zorgde voor inconsistentie door het hele product heen. Samen met het development team heb ik een systematische aanpak neergezet. Dit resulteerde in een snelle, iteratieve workflow tussen UX en development."
+    outcomeTitle: "Projectuitkomsten"
     outcomes:
       - "Consistente componenten door het gehele product"
-      - "Snellere samenwerking tussen UX en development"
+      - "Permanent een snellere, betere samenwerking tussen UX en development"
       - "Uitgebreide, toepasbare documentatie"
       - "Complimenten van Visma-developers over kwaliteit en bruikbaarheid"
     cardColor: "sky"
@@ -59,13 +59,14 @@ projects:
   - company: "MoreApp"
     period: "2021 - 2023"
     title: "Frictieloos invullen van zakelijke formulieren"
-    body: "MoreApp is een applicatie waarmee professionals op de werkvloer digitale formulieren invullen. De oude interface was verouderd en onoverzichtelijk; ik heb 'm samen met developers en QA volledig herontworpen tot een snelle, toegankelijke werkapplicatie."
-    outcomeTitle: "Project uitkomst"
+    body: "MoreApp is een applicatie waarmee professionals op de werkvloer digitale formulieren invullen. De interface was verouderd en onoverzichtelijk. Ik heb 'm samen met developers en QA volledig herontworpen tot een snelle, toegankelijke werkapplicatie."
+    outcomeTitle: "Projectuitkomsten"
     outcomes:
-      - "Workspaces vervangen chaos door structuur, per klant georganiseerd"
+      - "De chaos van de workspaces is vervangen door structuur."
+      - "Een workspace georganiseerd per klant"
       - "Toegankelijk ontwerp (WCAG 2.1), met hoge contrasten voor elke werkomgeving"
       - "Data veilig gesynchroniseerd in de cloud, niet meer lokaal per apparaat"
-      - "Zo intuïtief dat ook conservatievere gebruikers moeiteloos zijn overgestapt"
+      - "Zo intuïtief dat ook de conservatievere gebruikers moeiteloos overstapten"
     cardColor: "ice"
     imageSide: "right"
     image:
@@ -75,7 +76,7 @@ projects:
       height: 551
 
 voicesTitle: "Wat mensen over mij zeggen"
-voicesIntro: "Tijdens mijn carriere heb ik al het geluk gehad om met meerdere mensen te mogen werken, dit is hun ervaring om met mij samen te werken"
+voicesIntro: "Tijdens mijn carrière heb ik het geluk gehad om met meerdere mensen nauw samen te mogen werken. Dit is hoe zij het samenwerken met mij hebben ervaren."
 
 voices:
   - name: "Anke Smilde"
@@ -108,13 +109,13 @@ voices:
       width: 48
       height: 48
     quote:
-      - |
-        Corné is zo'n designer die je eraan herinnert waarom je zelf ooit begon met ontwerpen. Hij werkt met aandacht en is kritisch op zijn eigen werk. En hij staat altijd open voor feedback. Niet uit onzekerheid, maar omdat hij wil groeien. Het is knap hoe snel hij ideeën weet te vangen in een schets of prototype. Daarmee zet hij zijn collega's aan het denken en laat hij zien wat er mogelijk is. Corné ziet hoe belangrijk groepsdynamiek is voor goed werk. Hij zet zich daar actief voor in. Niet alleen met woorden, maar ook in zijn manier van samenwerken. Vanuit rust, ruimte en scherpe vragen.
-        Als design mentor heb ik Corné mogen begeleiden en zien groeien in zijn rol. Door zijn openheid en doorzettingsvermogen heeft hij gelukkig het plezier in ontwerpen zelf teruggevonden.
+      - "Corné is zo'n designer die je eraan herinnert waarom je zelf ooit begon met ontwerpen. Hij werkt met aandacht en is kritisch op zijn eigen werk. En hij staat altijd open voor feedback. Niet uit onzekerheid, maar omdat hij wil groeien. Het is knap hoe snel hij ideeën weet te vangen in een schets of prototype. Daarmee zet hij zijn collega's aan het denken en laat hij zien wat er mogelijk is. Corné ziet hoe belangrijk groepsdynamiek is voor goed werk. Hij zet zich daar actief voor in. Niet alleen met woorden, maar ook in zijn manier van samenwerken. Vanuit rust, ruimte en scherpe vragen."
+      - "Als design mentor heb ik Corné mogen begeleiden en zien groeien in zijn rol. Door zijn openheid en doorzettingsvermogen heeft hij gelukkig het plezier in ontwerpen zelf teruggevonden."
 
   - name: "Ryan Graute"
     role: "IT Engineer, NS"
     quote:
       - "Als softwareontwikkelaar heb ik met Corné samengewerkt, en dat heb ik als heel prettig ervaren. Corné is een UX designer die zijn werk serieus neemt. Hij baseert zijn antwoorden niet op een gevoel of door er iets uit zijn mouw te schudden. Door onderzoek te doen bij gebruikers weet hij precies wat goed werkt voor hen en wat niet. Door dit in kaart te brengen kan hij zijn designs gebruiksvriendelijker maken en bij elke pixel redeneren waarom die er staat en zo gevormd is voor de gebruiker."
-      - "Dat was goed terug te zien bij het nieuwe design van het product. Er was bewust gekozen voor grotere elementen, zodat gebruikers in de bouw de app met handschoenen aan kunnen bedienen, in plaats van een design met kleinere knoppen waarbij een misdruk veel sneller plaatsvindt. Bij het realiseren van een feature kan Corné mijn vragen als ontwikkelaar altijd beantwoorden. Mist er toch een situatie die kan optreden in het product, dan gaat hij terug naar de tekentafel om tot de beste oplossing voor de gebruiker te komen."
+      - "Dat was goed terug te zien bij het nieuwe design van het product. Er was bewust gekozen voor grotere elementen, zodat gebruikers in de bouw de app met handschoenen aan kunnen bedienen, in plaats van een design met kleinere knoppen waarbij een misdruk veel sneller plaatsvindt."
+      - "Bij het realiseren van een feature kan Corné mijn vragen als ontwikkelaar altijd beantwoorden. Mist er toch een situatie die kan optreden in het product, dan gaat hij terug naar de tekentafel om tot de beste oplossing voor de gebruiker te komen."
 ---
