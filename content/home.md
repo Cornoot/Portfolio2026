@@ -5,15 +5,15 @@ ogImage: "og-image.jpg"
 
 hero:
   eyebrow: "Daar heb je 'm!"
-  heading: "Ik ben Corné"
-  intro: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2C ervaringen."
-  ctaLabel: "Over werk en mijn leven"
+  heading: "Ik maak complexe uitdagingen schaalbaar, toegankelijk & verrassend simpel"
+  intro: "Ik ben Corné, UX/Product Designer. Ik ontwerp B2B-software en de design systems waarmee teams sneller en consistenter bouwen."
+  ctaLabel: "Over mij, mijn werk en mijn leven"
   ctaHref: "about.html"
   image:
     src: "portret-hero.jpg"
-    alt: "Corné van den Boogert, glimlachend op een pad met groen op de achtergrond"
-    width: 502
-    height: 521
+    alt: "Corné van den Boogert, lachend, met groen op de achtergrond"
+    width: 208
+    height: 208
 
 sectionTitle: "Uitgelicht werk"
 sectionIntro: "Ik heb de afgelopen jaren veel ervaring opgedaan als UX designer in verschillende settings: zo werkte ik als de enige product designer bij een start-up en een scale-up. Ik werkte met meerdere designers bij agencies en inhouse bij SaaS-bedrijven. Uiteindelijk is er voor mij één ding belangrijk: het product waaraan ik werk moet retegoed zijn!"

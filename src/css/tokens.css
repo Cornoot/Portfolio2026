@@ -85,11 +85,18 @@
     var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-200),
     var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-100);
 
+  /* Home hero speech bubble (file B3RobX7ftpScUngBjXJyIX, node
+     13:1306). Same as --shadow-photo minus the black-100 layer. */
+  --shadow-bubble:
+    10px 16px 104px 0px rgba(4, 9, 31, 0.15),
+    var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-200);
+
   /* --- Radii ---------------------------------------------- */
   --radius-8:  8px;   /* buttons */
-  --radius-12: 12px;  /* images inside cards */
+  --radius-12: 12px;  /* images inside cards, home hero photo */
   --radius-16: 16px;  /* top nav, project cards */
   --radius-24: 24px;  /* work section, photo frame */
+  --radius-40: 40px;  /* home hero speech bubble */
 
   /* --- Typeface families ---------------------------------- */
   --font-display: "REM", system-ui, sans-serif;
@@ -98,6 +105,9 @@
   /* --- Type scale (family / weight / size / line-height) --- */
   /* Header/h1 */
   --h1-size: 60px;   --h1-line: 60px;   --h1-weight: 700;
+  /* Home hero headline — raw values in Figma, no named style. Same
+     60px as h1 but on a 72px line; mobile drops to 48/72. */
+  --hero-h1-line: 72px; --hero-h1-size-mobile: 48px;
   /* Card headline (raw values in Figma, no named style) */
   --h2-size: 40px;   --h2-line: 64px;   --h2-weight: 700;
   /* Header/h3 */

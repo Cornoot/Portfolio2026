@@ -27,37 +27,106 @@
   border-radius: var(--radius-24);
 }
 
-@media (max-width: 767px) {
-  .hero-card--home { padding-block: 40px; }
+/* Home hero (file B3RobX7ftpScUngBjXJyIX, nodes 13:1299 desktop,
+   13:1327 tablet, 13:1367 mobile): one centred column at every
+   breakpoint. Tablet sets 40px inside the card; mobile keeps the
+   prose-shell's 24px, because at 40px the 48px headline's longest
+   word ("toegankelijk", ~316px) is wider than the column — Figma
+   lets it overflow there too, so the visual result is the same. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .hero-card--home .prose-shell { padding-inline: 40px; }
 }
 
 .hero {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 48px;
+  text-align: center;
 }
 
 .hero__text {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
-  max-width: 526px;
 }
 
 .hero__lines { display: flex; flex-direction: column; gap: 12px; }
 
+.hero h1 { line-height: var(--hero-h1-line); }
+
+@media (max-width: 767px) {
+  .hero { gap: 56px; }
+  .hero h1 {
+    font-size: var(--hero-h1-size-mobile);
+    overflow-wrap: break-word; /* NOT in Figma — stops horizontal scroll below 375px */
+  }
+}
+
+/* The photo is tilted -2deg. Like .logo-badge-frame, the fixed
+   248px box is the rotated photo's bounding box in Figma, so the
+   tilt never nudges the layout around it. It's also the anchor for
+   the speech bubble. */
 .hero__media {
+  position: relative;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 248px;
+  height: 248px;
 }
 
-@media (max-width: 1023px) {
-  .hero { flex-direction: column; align-items: flex-start; }
-  .hero__media { align-self: center; padding-block: 24px; }
+.hero__photo {
+  width: 240px;
+  height: 240px;
+  border: 16px solid var(--text-inverse);
+  border-radius: var(--radius-12);
+  overflow: hidden;
+  transform: rotate(-2deg);
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-12);
+}
+
+/* Speech bubble with the eyebrow text, tilted 7.96deg. Offsets are
+   measured from the photo box in each Figma frame. Figma gives the
+   rotated bounding box, CSS positions the unrotated box, so each
+   value has the rotation's overhang (2px / 10px) added. */
+.hero__bubble {
+  position: absolute;
+  left: 454px;
+  top: 245px;
+  z-index: 1;
+  display: flex;
+  padding: 8px 17px;
+  background: var(--gray-0);
+  border-radius: var(--radius-40);
+  box-shadow: var(--shadow-bubble);
+  transform: rotate(7.96deg);
+  white-space: nowrap;
+}
+
+.hero__bubble span { position: relative; } /* text above the tail */
+
+.hero__bubble-tail {
+  position: absolute;
+  right: 19px;
+  top: 26px;
+  transform: rotate(-38.41deg);
+}
+
+@media (max-width: 1199px) {
+  .hero__bubble { left: 310px; top: 181px; }
+}
+
+@media (max-width: 767px) {
+  .hero__bubble { left: 150px; top: 284px; }
 }
 
 /* --- About -------------------------------------------------- */

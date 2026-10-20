@@ -66,13 +66,24 @@ function icon(name) {
 function renderHome(data) {
   const h = data.hero;
 
+  /* Centred column: tilted photo on top, the eyebrow as a speech
+     bubble beside it, then heading, intro and CTA. The bubble comes
+     before the h1 in source order, so it's still read first. Its
+     tail is a Figma export (assets/icons/bubble-tail.svg), sized at
+     its own intrinsic 21.7041 x 27.3206. */
   const hero = `
         <div class="hero-card hero-card--home">
           <div class="prose-shell">
             <div class="hero">
+              <div class="hero__media">
+                <div class="hero__photo">${img(h.image, { lazy: false })}</div>
+                <p class="eyebrow hero__bubble">
+                  <img class="hero__bubble-tail" src="assets/icons/bubble-tail.svg" alt="" width="21.7041" height="27.3206">
+                  <span>${inline(h.eyebrow)}</span>
+                </p>
+              </div>
               <div class="hero__text">
                 <div class="hero__lines">
-                  <p class="eyebrow">${inline(h.eyebrow)}</p>
                   <h1>${inline(h.heading)}</h1>
                   <p class="intro">${inline(h.intro)}</p>
                 </div>
@@ -80,9 +91,6 @@ function renderHome(data) {
                   ${inline(h.ctaLabel)}
                   ${icon("arrow-sm-right")}
                 </a>
-              </div>
-              <div class="hero__media">
-                <div class="photo-frame">${img(h.image, { lazy: false })}</div>
               </div>
             </div>
           </div>

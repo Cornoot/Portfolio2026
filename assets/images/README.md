@@ -7,7 +7,7 @@ anders klopt de gereserveerde ruimte niet en krijg je layout shift.
 ## Homepage
 | Bestand | Verhouding | Node in Figma |
 | --- | --- | --- |
-| `portret-hero.jpg` | 502 x 521 | 3218:9984 |
+| `portret-hero.jpg` | 208 x 208 | 13:1300 (bestand B3RobX7ftpScUngBjXJyIX) |
 | `dialog-dashboard.png` | 516 x 503 | 3218:10002 |
 | `design-system.png` | 516 x 523 | 3218:10005 |
 | `moreapp.png` | 516 x 551 | 3218:10034 |
