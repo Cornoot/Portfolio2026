@@ -1,8 +1,9 @@
 /* ============================================================
    tokens.css
-   Every value here is read directly from Figma
-   (file 7pVjAAYSG0ohQpe5RJ9Bal). Do not invent new values —
-   add them in Figma first, then mirror them here.
+   Every value here is read directly from Figma (originally file
+   7pVjAAYSG0ohQpe5RJ9Bal, since Oct 2026 B3RobX7ftpScUngBjXJyIX).
+   Do not invent new values — add them in Figma first, then
+   mirror them here.
    ============================================================ */
 
 :root {
@@ -38,6 +39,16 @@
   --text-secondary:       var(--gray-700);
   --text-tertiary:        var(--gray-600);
   --text-inverse:         var(--gray-0);
+  /* Added with the case studies (Oct 2026). Same idea: Figma's
+     library names (bg/accent/sand, text/link/default, …), mapped
+     onto existing values. */
+  --bg-accent-sand:         var(--card-sand);
+  --bg-sunken-secondary:    var(--gray-100);
+  --text-inverse-secondary: var(--gray-100);
+  --text-link:              var(--brand-500);
+  /* bg/highlight/default — the only genuinely new colour. Dark
+     navy behind "Achter de schermen" on the case studies. */
+  --bg-highlight:           #001424;
 
   /* --- Colour: card surfaces ------------------------------ */
   /* Raw hex in Figma (not variables). One per project card,
@@ -94,8 +105,9 @@
   /* --- Radii ---------------------------------------------- */
   --radius-8:  8px;   /* buttons */
   --radius-12: 12px;  /* images inside cards, home hero photo */
-  --radius-16: 16px;  /* top nav, project cards */
-  --radius-24: 24px;  /* work section, photo frame */
+  --radius-16: 16px;  /* hero cards, testimonial cards */
+  --radius-20: 20px;  /* home project cards */
+  --radius-24: 24px;  /* photo frame, TL;DR, "Achter de schermen" */
   --radius-40: 40px;  /* home hero speech bubble */
 
   /* --- Typeface families ---------------------------------- */
@@ -116,10 +128,14 @@
   --h4-size: 28px;   --h4-line: 44px;   --h4-weight: 700;
   /* Card sub-heading "Project uitkomst" */
   --h5-size: 20px;   --h5-line: 32px;   --h5-weight: 700;
-  /* Text/Intro/semibold. In Figma staat deze stijl op 24/38; op de
-     site is de intro-tekst zelf naar 20/32 geschaald. Controleer of
-     Figma nog bijgewerkt moet worden. */
+  /* Text/Header/h6 */
+  --h6-size: 20px;   --h6-line: 28px;   --h6-weight: 700;
+  /* Text/Header/H5 — Inter, not REM. "Achter de schermen" title. */
+  --text-h5-size: 24px; --text-h5-line: 38px;
+  /* Text/Intro/semibold + Text/Intro/medium (weight 500). */
   --intro-size: 20px; --intro-line: 32px; --intro-weight: 600;
+  /* Home hero intro: same style name in Figma, but set at 24/38. */
+  --intro-lg-size: 24px; --intro-lg-line: 38px;
   /* De naam in de top nav gebruikte dezelfde stijl en blijft op de
      originele 24/38 staan — daarom een eigen paar. */
   --topnav-name-size: 24px; --topnav-name-line: 38px;
@@ -127,20 +143,21 @@
   --btn-size: 16px;  --btn-line: 24px;  --btn-weight: 600;
   /* Body + Text/italic */
   --body-size: 16px; --body-line: 24px; --body-weight: 400;
-  /* Testimonial quote — raw values in Figma, no named style. Same
-     16px as body but on a 28px line, so a long quote stays airy. */
-  --quote-size: 16px; --quote-line: 28px;
-  /* Testimonial attribution. The name reuses the h5 style above
-     (20/32); only the role needs its own pair. Together they make
-     48px — exactly the height of the portrait beside them, which
-     is what sets the height of a quote with no portrait. */
-  --voice-role-size: 12px; --voice-role-line: 16px;
+  /* Text/regular — body copy on the case studies, testimonials
+     and project cards. Same 16px as body, on a 28px line. */
+  --text-regular-size: 16px; --text-regular-line: 28px;
+  /* Text/Small/Regular — testimonial role line. */
+  --small-size: 12px; --small-line: 20px;
 
   /* --- Layout --------------------------------------------- */
   /* Widths measured off the Figma frames. The shell caps and
      centres, so viewports above 1440px keep content centred.  */
-  --shell-max: 1296px;   /* work section, about content cards, desktop */
-  --prose-max: 1076px;   /* hero content, top nav, footer inner, desktop */
+  --hero-max: 1392px;    /* top nav frame, home + case hero, desktop */
+  --shell-max: 1296px;   /* work section, testimonials, about cards */
+  --prose-max: 1076px;   /* hero content, about intro */
+  --content-max: 856px;  /* nav content, footer, section intros, case text */
+  --case-media-max: 1264px; /* case study hero image */
+  --case-wide-max: 904px;   /* TL;DR + "Achter de schermen" */
 
   --pad-mobile: 16px;
   --pad-tablet: 32px;

@@ -1,12 +1,10 @@
 /* ============================================================
-   pages.css — home + about layout
+   pages.css — home, case study, referrals and about layout
    ============================================================ */
 
 /* --- Page stack ----------------------------------------------- */
-/* Every page is a column of "cards" (hero, then one or more
-   content panels) on the shared sunken page background, each
-   8px apart — replaces the old hero-band-bleeds-behind-the-work-
-   section layering trick with plain stacked boxes.               */
+/* About is a column of "cards" (hero, then content panels) on the
+   shared sunken page background, each 8px apart.                 */
 .page-stack {
   display: flex;
   flex-direction: column;
@@ -27,12 +25,33 @@
   border-radius: var(--radius-24);
 }
 
-/* Home hero (file B3RobX7ftpScUngBjXJyIX, nodes 13:1299 desktop,
-   13:1327 tablet, 13:1367 mobile): one centred column at every
-   breakpoint. Tablet sets 40px inside the card; mobile keeps the
-   prose-shell's 24px, because at 40px the 48px headline's longest
-   word ("toegankelijk", ~316px) is wider than the column — Figma
-   lets it overflow there too, so the visual result is the same. */
+/* ============================================================
+   Home (file B3RobX7ftpScUngBjXJyIX: 43:13182 desktop,
+   43:13516 mobile — no tablet frame, tablet is derived)
+   ============================================================ */
+
+/* The home hero is wider than the shell: 1392px, 24px from the
+   viewport edge, like the top nav frame. Edge to edge on mobile. */
+.hero-wrap {
+  max-width: calc(var(--hero-max) + 48px);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Tablet (no Figma frame): hero, nav and content all line up on
+   the shell's 32px instead of 24/48/32. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .hero-wrap { padding-inline: var(--pad-tablet); }
+}
+
+@media (max-width: 767px) {
+  .hero-wrap { padding-inline: 0; }
+}
+
+/* Inside the card: 40px on tablet; mobile keeps the prose-shell's
+   24px, because at 40px the 48px headline's longest word
+   ("toegankelijk", ~316px) is wider than the column — Figma lets
+   it overflow there, so the visual result is the same.          */
 @media (min-width: 768px) and (max-width: 1199px) {
   .hero-card--home .prose-shell { padding-inline: 40px; }
 }
@@ -55,6 +74,7 @@
 .hero__lines { display: flex; flex-direction: column; gap: 12px; }
 
 .hero h1 { line-height: var(--hero-h1-line); }
+.hero .intro { font-size: var(--intro-lg-size); line-height: var(--intro-lg-line); }
 
 @media (max-width: 767px) {
   .hero { gap: 56px; }
@@ -94,21 +114,22 @@
   border-radius: var(--radius-12);
 }
 
-/* Speech bubble with the eyebrow text, tilted 7.96deg. Offsets are
-   measured from the photo box in each Figma frame. Figma gives the
-   rotated bounding box, CSS positions the unrotated box, so each
-   value has the rotation's overhang (2px / 10px) added. */
+/* Speech bubble with the eyebrow text. Offsets are measured from
+   the photo box. Figma gives the rotated bounding box, CSS
+   positions the unrotated box, so each value has the rotation's
+   overhang added. Desktop (and the derived tablet): left of the
+   photo, tilted -9.52deg. Mobile: right of it, tilted 7.96deg. */
 .hero__bubble {
   position: absolute;
-  left: 454px;
-  top: 245px;
+  left: -188px;
+  top: 196px;
   z-index: 1;
   display: flex;
   padding: 8px 17px;
   background: var(--gray-0);
   border-radius: var(--radius-40);
   box-shadow: var(--shadow-bubble);
-  transform: rotate(7.96deg);
+  transform: rotate(-9.52deg);
   white-space: nowrap;
 }
 
@@ -121,15 +142,328 @@
   transform: rotate(-38.41deg);
 }
 
+@media (max-width: 767px) {
+  .hero__bubble { left: 150px; top: 284px; transform: rotate(7.96deg); }
+}
+
+/* --- Home: featured work -------------------------------------- */
+.home-work {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 72px;
+}
+
+.home-work > .section-intro {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+/* --- Home: testimonials --------------------------------------- */
+.home-voices {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 80px 110px;
+}
+
+.home-voices__head {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.home-voices__head .section-intro { flex: 1; min-width: 0; }
+.home-voices__head .btn { flex-shrink: 0; }
+
 @media (max-width: 1199px) {
-  .hero__bubble { left: 310px; top: 181px; }
+  .home-voices { padding-inline: 0; }
 }
 
 @media (max-width: 767px) {
-  .hero__bubble { left: 150px; top: 284px; }
+  .home-work { margin-top: 64px; padding-inline: 16px; }
+  .home-voices { padding-inline: 16px; }
+  .home-voices__head { flex-direction: column; }
 }
 
-/* --- About -------------------------------------------------- */
+/* ============================================================
+   Case study (43:13269 / 43:13353 desktop, 43:13015 / 43:12942
+   mobile). One template, content from content/cases/*.md.
+   ============================================================ */
+.case { padding-inline: 24px; }
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .case { padding-inline: var(--pad-tablet); }
+}
+
+@media (max-width: 767px) {
+  .case { padding-inline: 16px; }
+}
+
+/* --- Hero: meta, title, wide image -------------------------- */
+.case-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding-top: 72px;
+}
+
+.case-hero__text {
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.case-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: var(--intro-size);
+  line-height: var(--intro-line);
+  font-weight: var(--intro-weight);
+  color: var(--text-secondary);
+}
+.case-hero__company { color: var(--text-link); }
+
+.case-hero__title {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: var(--h3-weight);
+}
+
+.case-hero__media {
+  width: 100%;
+  max-width: var(--case-media-max);
+}
+
+@media (max-width: 767px) {
+  .case-hero { gap: 24px; padding-top: 48px; align-items: stretch; }
+  .case-hero__text { gap: 16px; }
+  /* base.css shrinks every h1 on mobile — this one stays 36/40. */
+  .case-hero__title { font-size: var(--h3-size); line-height: var(--h3-line); }
+}
+
+/* --- Media (hero, wide images, galleries) -------------------- */
+/* Desktop and tablet keep each image's own ratio. On mobile Figma
+   crops to fixed heights per image; the content file passes that
+   height as --mh, and object-fit:cover does the cropping.        */
+.case-media {
+  margin: 0;
+  border-radius: var(--radius-12);
+  overflow: hidden;
+}
+.case-media img { width: 100%; height: auto; }
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.case-gallery .case-media { border-radius: var(--radius-8); }
+
+@media (max-width: 767px) {
+  .case-media[style*="--mh"] { height: var(--mh); }
+  .case-media[style*="--mh"] img { height: 100%; object-fit: cover; }
+  .case-gallery { gap: 12px; }
+  .case-gallery--stack { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* --- TL;DR --------------------------------------------------- */
+/* Overlaps the bottom 28px of the hero image, as in Figma. */
+.case-tldr {
+  position: relative;
+  max-width: var(--case-wide-max);
+  margin: -28px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px;
+  background: var(--bg-accent-sand);
+  border-radius: var(--radius-24);
+}
+
+@media (max-width: 767px) {
+  .case-tldr { margin-top: 40px; padding: 24px; }
+}
+
+/* --- Body: sections of text, media and proof ----------------- */
+.case-body {
+  max-width: var(--content-max);
+  margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.case-section { display: flex; flex-direction: column; gap: 24px; }
+.case-section--tight { gap: 12px; }
+.case-section--loose { gap: 40px; }
+
+@media (max-width: 767px) {
+  .case-body { margin-top: 40px; gap: 40px; }
+  .case-section--loose { gap: 24px; }
+}
+
+/* Lead: "Het probleem" — Header/h4 + Text/Intro/medium. */
+.case-lead { display: flex; flex-direction: column; gap: 12px; }
+
+/* Text: Text/Header/h6 + Text/regular. A blank line between
+   paragraphs, as the multi-paragraph text blocks have in Figma. */
+.case-text { display: flex; flex-direction: column; gap: 12px; }
+
+.case-text__title {
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+  font-weight: var(--h6-weight);
+}
+
+.case-text__body,
+.case-proof {
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+  color: var(--text-secondary);
+}
+.case-text__body { display: flex; flex-direction: column; gap: var(--text-regular-line); }
+.case-text__body a { color: var(--text-link); text-decoration: underline; }
+
+/* "Bewijs:" — a quote-style aside with a 2px rule on the left. */
+.case-proof {
+  margin: 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--border-primary);
+}
+
+/* --- Achter de schermen -------------------------------------- */
+/* 904px wide, so on desktop it hangs 24px past the 856px column
+   on both sides. Below that it simply fills the column.          */
+.case-bts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px;
+  background: var(--bg-highlight);
+  border-radius: var(--radius-24);
+  color: var(--text-inverse-secondary);
+}
+
+@media (min-width: 1024px) {
+  .case-bts { margin-inline: -24px; }
+}
+
+.case-bts__title {
+  font-family: var(--font-body);
+  font-size: var(--text-h5-size);
+  line-height: var(--text-h5-line);
+  font-weight: 700;
+  color: var(--text-inverse);
+}
+
+.case-bts__grid {
+  display: grid;
+  grid-template-columns: 197px minmax(0, 1fr);
+  gap: 24px;
+}
+
+.case-bts__col { display: flex; flex-direction: column; gap: 24px; margin: 0; }
+
+.case-bts__item { display: flex; flex-direction: column; gap: 6px; }
+
+.case-bts__label {
+  font-family: var(--font-body); /* the notes are h3s — Inter here, not REM */
+  font-size: var(--intro-size);
+  line-height: var(--intro-line);
+  font-weight: var(--intro-weight);
+  color: var(--text-inverse);
+}
+
+.case-bts__value {
+  margin: 0;
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+}
+.case-bts__value a { color: inherit; text-decoration: underline; }
+
+@media (max-width: 767px) {
+  .case-bts { gap: 24px; padding: 24px; }
+  .case-bts__grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Referrals (43:12798 desktop, 43:12870 mobile)
+   ============================================================ */
+.referrals {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 72px 110px;
+}
+
+.referrals__head {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-bottom: 56px;
+}
+
+/* Pull quote left (416px), the full testimonial right (526px). */
+.referral {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.referral__pull {
+  flex: 0 0 416px;
+  font-family: var(--font-display);
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  font-weight: var(--h4-weight);
+  color: var(--text-secondary);
+}
+
+.referral__card {
+  flex: 0 0 526px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+}
+
+.referral__quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-regular-line);
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1199px) {
+  .referrals { padding-inline: 0; }
+}
+
+@media (max-width: 1023px) {
+  .referral { flex-direction: column; gap: 12px; }
+  .referral__pull,
+  .referral__card { flex: none; }
+}
+
+@media (max-width: 767px) {
+  .referrals { padding-inline: 20px; }
+}
+
+/* ============================================================
+   About
+   ============================================================ */
 .about {
   display: flex;
   flex-direction: column;
@@ -153,6 +487,26 @@
   .about__intro { flex-direction: column; }
   .about__intro-text { max-width: none; }
   .about__portrait { align-self: center; }
+}
+
+/* --- About content panel -------------------------------------- */
+/* White surface card at radius-24. Two of these stack per page.  */
+.about__panel {
+  background: var(--bg-default);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-24);
+  padding: 80px 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+@media (max-width: 1023px) {
+  .about__panel { padding: 80px 40px; }
+}
+
+@media (max-width: 767px) {
+  .about__panel { padding: 24px 16px; }
 }
 
 /* --- CV list ------------------------------------------------- */

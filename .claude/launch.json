@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dist-preview",
+      "runtimeExecutable": "powershell.exe",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\Corne\\AppData\\Local\\Temp\\claude\\H--Portfolio-Portfolio2026\\1abe7f9c-3baa-45a8-a75f-f574c5ee44de\\scratchpad\\serve.ps1", "-Root", "H:\\Portfolio\\Portfolio2026\\dist", "-Port", "4174"],
+      "port": 4174
+    }
+  ]
+}

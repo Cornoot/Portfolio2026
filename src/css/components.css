@@ -1,6 +1,7 @@
 /* ============================================================
    components.css
-   Mirrors the Figma component library (node 3218:10165).
+   Mirrors the Figma component library (node 3218:10165, and since
+   Oct 2026 the "Page components" section of B3RobX7ftpScUngBjXJyIX).
    Active/clicked state deliberately reuses the rest state.
    ============================================================ */
 
@@ -24,12 +25,17 @@
 @media (prefers-reduced-motion: no-preference) {
   .btn { transition: background-color var(--transition-fast) var(--ease-out),
                      box-shadow var(--transition-fast) var(--ease-out),
-                     color var(--transition-fast) var(--ease-out); }
+                     color var(--transition-fast) var(--ease-out),
+                     gap var(--transition-fast) var(--ease-out),
+                     padding var(--transition-fast) var(--ease-out); }
 }
 
-/* Icon-bearing variants use asymmetric padding, per Figma. */
+/* Icon-bearing variants use asymmetric padding, per Figma. On hover
+   the icon slides 4px away from the label; the right padding gives
+   up those 4px, so the button keeps its width and nothing next to
+   it reflows. */
 .btn--icon { gap: 8px; padding-left: 16px; padding-right: 12px; }
-.btn--icon:hover { gap: 12px; }
+.btn--icon:hover { gap: 12px; padding-right: 8px; }
 
 .btn__icon {
   width: 20px;
@@ -72,14 +78,19 @@
 }
 
 /* --- Button / Tertiary --------------------------------------- */
-/* Ghost button — no fill or border. Used for the About page's
-   "Terug naar home" back link.                                  */
-.btn--tertiary {
+/* Ghost button — no fill or border. "Over mij" in the nav, "Bekijk
+   case study" on the project cards, "Terug naar home" on About.
+   Figma pads it 12 left / 16 right, with or without an icon. */
+.btn--tertiary,
+.btn--tertiary.btn--icon {
   background: transparent;
   color: var(--text-secondary);
+  padding-left: 12px;
+  padding-right: 16px;
 }
-.btn--tertiary:hover { background: transparent; }
-.btn--tertiary:active { background: transparent; }
+.btn--tertiary:hover { background: transparent; color: var(--gray-900); }
+.btn--tertiary.btn--icon:hover { padding-right: 12px; } /* same width trick, from 16px */
+.btn--tertiary:active { background: transparent; color: var(--text-secondary); }
 
 /* --- Link (inline text link, e.g. footer socials) ------------ */
 .link {
@@ -125,32 +136,33 @@
   color: var(--text-inverse);
 }
 
-/* --- Header (sticky nav) --------------------------------------- */
-/* NOT in Figma — the nav pill itself is the Figma component;
-   pinning it on scroll is an addition. Transparent on purpose:
-   only the pill (which has its own opaque background) should
-   read as overlapping the page — not the header around it.
-   Padding, not margin, so the 32px/8px spacing never collapses
-   away underneath the sticky positioning.                       */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  padding-block: 32px 8px;
+/* --- Header ---------------------------------------------------- */
+/* Oct 2026 design: the nav is no longer a white pill but sits
+   straight on the page background, so it's no longer sticky —
+   a transparent bar would overlap content on scroll.
+   Spacing: nav 32px from the top, hero 116px (desktop); nav at
+   the very top, hero at 90px (mobile).                           */
+.site-header { padding: 32px 24px 11px; }
+
+/* Tablet: nav content on the same 32px line as the page content. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .site-header { padding-inline: 8px; }
+}
+
+@media (max-width: 767px) {
+  .site-header { padding: 0 0 17px; }
 }
 
 /* --- Top Nav ------------------------------------------------ */
 .topnav {
-  max-width: var(--prose-max);
+  max-width: var(--hero-max);
   margin-inline: auto;
-  background: var(--bg-default);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-16);
-  filter: drop-shadow(var(--depth-0) var(--depth-025) calc(var(--depth-100) / 2) var(--black-200));
   padding: 16px 24px;
 }
 
 .topnav__inner {
+  max-width: var(--content-max);
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,20 +181,14 @@ header {
   white-space: nowrap;
 }
 
-.topnav__actions { display: flex; align-items: center; gap: 16px; }
-
-/* The "Over mij" nav button is absent on tablet and mobile in
-   the Figma design. Route to About is the hero CTA there. */
-@media (max-width: 1199px) {
-  .topnav__actions .btn--secondary { display: none; }
-}
+.topnav__actions { display: flex; align-items: center; gap: 24px; }
 
 @media (max-width: 767px) {
-  .topnav { padding: 16px 24px; }
-  .topnav__name { font-size: 20px; line-height: 32px; white-space: normal; }
+  .topnav { padding: 16px; }
+  .topnav__actions { gap: 4px; }
 }
 
-/* --- Photo frame (hero + about portrait) -------------------- */
+/* --- Photo frame (about portrait) ---------------------------- */
 /* White border, 24px radius, soft shadow. */
 .photo-frame {
   background: var(--gray-0);
@@ -200,222 +206,163 @@ header {
   object-fit: cover;
 }
 
-/* --- Work section ------------------------------------------- */
-/* .voices ("Wat mensen over mij zeggen") is the same white surface
-   at the same paddings — in Figma the two panels stack as
-   identical siblings, so they share one rule rather than drifting
-   apart later. Only what sits inside them differs.              */
-.work,
-.voices {
-  background: var(--bg-default);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-16);
-  padding: 80px 110px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  overflow: clip;
+/* --- Section intro ------------------------------------------ */
+/* Header/h4 + Text/Intro/medium: "Uitgelicht werk", "Wat collega's
+   over mij zeggen", and the referrals page header.               */
+.section-intro { display: flex; flex-direction: column; gap: 12px; }
+
+.section-intro__title,
+.h4 {
+  font-family: var(--font-display);
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  font-weight: var(--h4-weight);
+  color: var(--gray-900);
 }
 
-@media (max-width: 1023px) {
-  .work,
-  .voices { padding: 72px 40px; }
-}
+.intro--medium { font-weight: 500; color: var(--text-secondary); }
 
-@media (max-width: 767px) {
-  .work,
-  .voices { padding: 24px 16px; }
-}
+/* --- Project card (home) ------------------------------------ */
+/* Image and text side by side at a fixed 624px, alternating
+   sides. The text column is a fixed 464px, padded 40/72 beside an
+   image on the left and 8/24 beside one on the right. Below 1024px
+   the card stacks, image on top.                                 */
+.projects { display: flex; flex-direction: column; gap: 24px; }
 
-.work__intro,
-.voices__intro { display: flex; flex-direction: column; gap: 12px; }
-.work__intro .intro,
-.voices__intro .intro { font-weight: 500; } /* Text/Intro/medium — the only spot this weight is used */
-
-/* --- About content panel -------------------------------------- */
-/* Same "surface card" idea as .work, at a wider radius per Figma
-   (About's cards use radius-24 where Home's work section uses
-   radius-16 — a genuine difference between the two pages, not
-   normalised away). Two of these stack per About page.           */
-.about__panel {
-  background: var(--bg-default);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-24);
-  padding: 80px 110px;
-  display: flex;
-  flex-direction: column;
-  gap: 72px;
-}
-
-@media (max-width: 1023px) {
-  .about__panel { padding: 80px 40px; }
-}
-
-@media (max-width: 767px) {
-  .about__panel { padding: 24px 16px; }
-}
-
-/* --- Project card ------------------------------------------- */
-.card {
-  border-radius: var(--radius-16);
-  padding: 32px;
-  overflow: clip;
-}
-.card--sand { background: var(--card-sand); }
-.card--sky  { background: var(--card-sky); }
-.card--ice  { background: var(--card-ice); }
-
-.card__grid {
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.card__body {
-  flex: 1 0 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.card__header { display: flex; flex-direction: column; gap: 16px; }
-
-.card__meta {
+.project-card {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-family: var(--font-display);
-  font-size: var(--body-size);
-  line-height: var(--body-line);
-  color: var(--card-meta);
+  gap: 24px;
+  height: 624px;
+  padding: 16px;
+  border-radius: var(--radius-20);
 }
-.card__meta strong { font-weight: 600; }
-.card__meta span { font-weight: 400; }
-.card__dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--card-meta);
-  flex-shrink: 0;
-}
+.project-card--sand { background: var(--bg-accent-sand); }
+.project-card--gray { background: var(--bg-sunken-secondary); }
+.project-card--media-right { flex-direction: row-reverse; }
 
-.card__content { display: flex; flex-direction: column; gap: 20px; }
-
-.card__outcome-title {
-  font-family: var(--font-display);
-  font-size: var(--h5-size);
-  line-height: var(--h5-line);
-  font-weight: var(--h5-weight);
-  color: var(--card-meta);
-}
-
-.card__outcomes {
-  margin: 11px 0 0;
-  padding-left: 24px;
-  color: var(--gray-800);
-}
-.card__outcomes li { margin: 0; }
-
-/* Card image holds its Figma aspect ratio at every breakpoint. */
-.card__media {
-  flex: 1 0 0;
+/* 690px at most, as in Figma — on a wide card the spare room stays
+   on the text side; on a narrower desktop the image gives way. */
+.project-card__media {
+  flex: 0 1 690px;
   min-width: 0;
   align-self: stretch;
   border-radius: var(--radius-12);
   overflow: hidden;
 }
-.card__media img {
+.project-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-12);
 }
 
-/* Cards alternate image side on desktop, per the design. */
-.card--media-first .card__grid { flex-direction: row-reverse; }
+.project-card__body {
+  flex: 0 0 464px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  /* Figma pads 94px on the right, but its fixed 352px text runs
+     into that padding; 72px gives the same text width cleanly. */
+  padding: 24px 72px 24px 40px;
+}
+.project-card--media-right .project-card__body { padding: 24px 24px 24px 8px; }
+
+.project-card__title { max-width: 352px; } /* h3 style from base.css */
+
+.project-card__text {
+  max-width: 352px;
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+  color: var(--gray-800);
+}
+
+@media (max-width: 1023px) {
+  .project-card,
+  .project-card--media-right {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+  .project-card__media { flex: none; aspect-ratio: 690 / 592; }
+  .project-card__body,
+  .project-card--media-right .project-card__body {
+    flex: none;
+    padding: 24px 20px;
+  }
+  .project-card__title,
+  .project-card__text { max-width: none; }
+}
 
 @media (max-width: 767px) {
-  .card { padding: 32px 24px; }
-  .card__grid,
-  .card--media-first .card__grid { flex-direction: column; gap: 40px; }
-  /* flex: none (basis auto) lets aspect-ratio govern the height here.
-     flex: 1 0 0 (used on desktop, where the row's own height wins)
-     would otherwise collapse this to 0px tall: overflow:hidden makes
-     the browser ignore aspect-ratio when resolving a 0 flex-basis. */
-  .card__media { flex: none; width: 100%; aspect-ratio: 1 / 1; }
+  .projects { gap: 8px; }
+  .project-card__media { aspect-ratio: auto; height: 350px; }
+  /* Figma crops these two from the left edge on mobile. */
+  .project-card__media--left img { object-position: left center; }
 }
 
-/* --- Testimonial card ---------------------------------------- */
-/* "Wat mensen over mij zeggen". All three cards share one surface
-   colour (no per-card colour like the project cards) and sit 16px
-   apart — tighter than the 24px between project cards, so the
-   quotes read as one list rather than three separate blocks.    */
-.voices__list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+/* --- Author (avatar + name + role) --------------------------- */
+/* Shared by the home testimonial cards and the referrals page.
+   The avatar is decorative (alt=""): the name sits right next
+   to it. Not every author has one — the name then starts flush. */
+.author { display: flex; align-items: center; gap: 12px; margin: 0; }
 
-.voice {
-  margin: 0;
-  background: var(--card-ice);
-  border-radius: var(--radius-16);
-  padding: 32px;
-}
-
-/* Paragraph gap equals one line of the quote, which is how the
-   blank line between paragraphs is set in Figma. */
-.voice__quote {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--quote-line);
-}
-
-.voice__quote p {
-  font-size: var(--quote-size);
-  line-height: var(--quote-line);
-  color: var(--text-secondary);
-}
-
-/* Not every quote has a portrait — Ryan Graute's has none in
-   Figma, and the name then simply starts at the padding edge. */
-.voice__author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.voice__avatar {
-  width: 48px;
-  height: 48px;
+.author__avatar {
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* Op mobiel zakt de kaartpadding naar 24px, gelijk aan de
-   projectkaarten daar. Desktop en tablet houden 32px. */
-@media (max-width: 767px) {
-  .voice { padding: 24px; }
-}
+.author__who { display: flex; flex-direction: column; }
 
-.voice__who { display: flex; flex-direction: column; }
-
-.voice__name {
+.author__name {
   font-family: var(--font-display);
-  font-size: var(--h5-size);
-  line-height: var(--h5-line);
-  font-weight: var(--h5-weight);
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+  font-weight: var(--h6-weight);
   color: var(--text-primary);
 }
 
-.voice__role {
-  font-size: var(--voice-role-size);
-  line-height: var(--voice-role-line);
-  color: var(--text-tertiary);
+.author__role {
+  font-size: var(--small-size);
+  line-height: var(--small-line);
+  color: var(--text-secondary);
+}
+
+/* --- Testimonial card (home) --------------------------------- */
+/* figure/blockquote/figcaption so each quote keeps its attribution
+   attached. In Figma each row of two is 276px; equal-height grid
+   rows give the same result without a fixed height, with the
+   author pinned to the bottom of the shorter card.               */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.voice-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  background: var(--bg-default);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-16);
+}
+
+.voice-card__quote {
+  flex: 1;
+  margin: 0;
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 767px) {
+  .voice-grid { grid-template-columns: 1fr; }
 }
 
 /* --- Footer -------------------------------------------------- */
@@ -427,10 +374,15 @@ header {
 }
 
 @media (min-width: 768px) { .site-footer { padding-inline: var(--pad-tablet); } }
-@media (min-width: 1200px) { .site-footer { padding-inline: 0; } }
+
+/* Distance to the footer differs per page in Figma: home ends on
+   the testimonials' own 80px padding, referrals has 56px below its
+   72px section padding. Case studies and About keep the 96px. */
+.page-home .site-footer { margin-top: 0; }
+.page-referrals .site-footer { margin-top: 56px; }
 
 .site-footer__inner {
-  max-width: var(--prose-max);
+  max-width: var(--content-max);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -439,15 +391,16 @@ header {
 
 .site-footer__brand { display: flex; align-items: center; gap: 12px; }
 
+/* Same style as the name in the top nav (Oct 2026 footer). */
 .site-footer__name {
   font-family: var(--font-display);
-  font-size: var(--h3-size);
-  line-height: var(--h3-line);
-  font-weight: var(--h3-weight);
-  color: var(--gray-900);
+  font-size: var(--topnav-name-size);
+  line-height: var(--topnav-name-line);
+  font-weight: var(--intro-weight);
+  color: var(--gray-800);
 }
 
-.site-footer__socials { display: flex; flex-direction: column; gap: 12px; }
+.site-footer__socials { display: flex; flex-direction: column; gap: 24px; }
 
 .site-footer__row {
   display: flex;
@@ -465,23 +418,19 @@ header {
 }
 
 .site-footer__made {
-  font-family: var(--font-display);
-  font-size: var(--btn-size);
-  font-weight: var(--btn-weight);
-  line-height: var(--btn-line);
-  color: var(--gray-700);
-}
-
-.site-footer__made {
   display: flex;
   align-items: center;
   min-height: 44px;
   width: 100%;
   border-top: 1px solid var(--border-primary);
   padding-top: 16px;
+  font-family: var(--font-display);
+  font-size: var(--btn-size);
+  font-weight: var(--btn-weight);
+  line-height: var(--btn-line);
+  color: var(--text-tertiary);
 }
 
 @media (max-width: 767px) {
-  .site-footer__name { font-size: var(--h4-size); line-height: var(--h4-line); }
   .site-footer__row { gap: 12px 8px; }
 }
