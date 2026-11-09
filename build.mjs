@@ -318,6 +318,36 @@ ${rows}
     </div>`;
 }
 
+/* ---------- 404 ------------------------------------------------ */
+function renderNotFound(data) {
+  const links = (data.links || []).map((l) => `
+            <li class="notfound__link">
+              <a class="link" href="${esc(l.href)}">${inline(l.label)}</a>
+              <span class="notfound__dash" aria-hidden="true">-</span>
+              <span class="notfound__text">${inline(l.text)}</span>
+            </li>`).join("");
+
+  return `
+    <div class="shell">
+      <section class="notfound">
+        <div class="notfound__head">
+          <p class="notfound__eyebrow">
+            <span class="notfound__code">${inline(data.eyebrow)}</span>${data.eyebrowLabel ? `
+            <span class="notfound__dash" aria-hidden="true">-</span>
+            <span class="notfound__label">${inline(data.eyebrowLabel)}</span>` : ""}
+          </p>
+          <h1 class="notfound__title">${inline(data.heading)}</h1>
+          <p class="notfound__intro">${inline(data.intro)}</p>
+        </div>
+        <nav class="notfound__nav" aria-labelledby="notfound-links">
+          <h2 class="notfound__links-title" id="notfound-links">${inline(data.linksTitle)}</h2>
+          <ul class="notfound__links">${links}
+          </ul>
+        </nav>
+      </section>
+    </div>`;
+}
+
 /* ---------- about ---------------------------------------------- */
 function renderAbout(data, body) {
   const a = data.about;
@@ -437,7 +467,14 @@ async function writePage(outFile, data, content, bodyClass) {
     .replace(/{{bodyClass}}/g, bodyClass)
     .replace("{{content}}", () => content);
 
-  await writeFile(`${OUT}/${outFile}`, html);
+  /* GitHub Pages serves 404.html at whatever URL was missing, also
+     a nested one like /werk/oud/. A <base> keeps the relative
+     asset and nav links pointing at the site root there. */
+  const out = outFile === "404.html"
+    ? html.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <base href="/">')
+    : html;
+
+  await writeFile(`${OUT}/${outFile}`, out);
   console.log(`  ✓ ${outFile}`);
 }
 
@@ -490,6 +527,9 @@ async function build() {
   }
 
   await page("referenties.html", referrals.data, renderReferrals(referrals.data), "page-referrals");
+
+  const notFound = await load("404");
+  await page("404.html", notFound.data, renderNotFound(notFound.data), "page-404");
 
   await writeFile(`${OUT}/.nojekyll`, "");
   await writeFile(`${OUT}/CNAME`, "www.cornevandenboogert.nl\n");

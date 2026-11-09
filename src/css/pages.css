@@ -703,3 +703,123 @@
 .closing { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .closing h3 { font-style: italic; }
 .closing p { max-width: 75ch; }
+
+/* ============================================================
+   404 (B3RobX7ftpScUngBjXJyIX: 138:17202 desktop — no tablet or
+   mobile frame; both are derived from the desktop and the other
+   pages' mobile type sizes)
+   ============================================================ */
+
+/* Desktop: an 808px area under the nav with the content centred in
+   it, footer straight underneath. The area has no fill of its own —
+   it sits on the page background like in Figma.                   */
+.notfound {
+  min-height: 808px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-block: 72px;
+}
+
+.page-404 .site-footer { margin-top: 0; }
+
+.notfound__head { display: flex; flex-direction: column; gap: 12px; }
+
+/* "404 - Niet gevonden" above the heading: code in link blue, the
+   dash in its 32px column like the fast-travel rows below.       */
+.notfound__eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: var(--intro-lg-size);
+  line-height: var(--intro-lg-line);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.notfound__code { color: var(--text-link); }
+
+.notfound__title {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: var(--h3-weight);
+  color: var(--text-primary);
+}
+
+.notfound__intro {
+  font-family: var(--font-body);
+  font-size: var(--intro-lg-size);
+  line-height: var(--intro-lg-line);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.notfound__nav { display: flex; flex-direction: column; gap: 8px; }
+
+.notfound__links-title {
+  font-family: var(--font-display);
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+  font-weight: var(--h6-weight);
+  color: var(--brand-500);
+}
+
+.notfound__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Link · dash (32px column) · description, on one baseline. */
+.notfound__link {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.notfound__dash {
+  flex: 0 0 32px;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.notfound__link .notfound__dash,
+.notfound__text {
+  font-size: var(--text-regular-size);
+  line-height: var(--text-regular-line);
+}
+
+.notfound__text { color: var(--text-primary); }
+
+/* Tablet: same layout on the shell's 32px, a lower area so the
+   footer doesn't drop far below the fold on a 1024px-high screen. */
+@media (max-width: 1199px) {
+  .notfound { min-height: 640px; }
+}
+
+/* Mobile: content-height with the referrals page's 20px sides.
+   Type steps down like the other mobile frames (h3 → 28, intro →
+   20/32). Each fast-travel option stacks: link above its line, so
+   the description never squeezes next to the link at 375px.      */
+@media (max-width: 767px) {
+  .notfound {
+    min-height: 0;
+    gap: 40px;
+    padding: 56px 20px 72px;
+  }
+  .notfound__eyebrow,
+  .notfound__intro {
+    font-size: var(--intro-size);
+    line-height: var(--intro-line);
+  }
+  .notfound__title { font-size: 28px; line-height: 36px; }
+  .notfound__links { gap: 12px; }
+  .notfound__link { flex-direction: column; gap: 0; }
+  .notfound__link .notfound__dash { display: none; }
+}
