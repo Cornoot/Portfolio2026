@@ -141,15 +141,11 @@
    straight on the page background, so it's no longer sticky —
    a transparent bar would overlap content on scroll.
    Spacing: nav 32px from the top, hero 116px (desktop); nav at
-   the very top, hero at 90px (mobile).                           */
+   the very top, hero at 90px (tablet + mobile — the tablet frame
+   108:17001 uses the mobile nav).                               */
 .site-header { padding: 32px 24px 11px; }
 
-/* Tablet: nav content on the same 32px line as the page content. */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .site-header { padding-inline: 8px; }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .site-header { padding: 0 0 17px; }
 }
 
@@ -183,7 +179,7 @@
 
 .topnav__actions { display: flex; align-items: center; gap: 24px; }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .topnav { padding: 16px; }
   .topnav__actions { gap: 4px; }
 }

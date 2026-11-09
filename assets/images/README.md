@@ -27,6 +27,17 @@ B3RobX7ftpScUngBjXJyIX.
 Ryan Graute en Martín Campagnoli hebben in het ontwerp geen portret;
 laat `avatar` daar gewoon weg in `content/referrals.md`.
 
+## Case study: Manager dashboard
+| Bestand | Verhouding | Node in Figma |
+| --- | --- | --- |
+| `md-hero.png` | 1264 x 598 | 108:16848 (getoond op 1264 x 556) |
+| `md-probleem.png` | 856 x 605 | 108:16889 |
+| `md-dashboard.png` | 856 x 605 | 108:16897 |
+| `md-galerij-1.png` | 416 x 294 | 108:16899 |
+| `md-galerij-2.png` | 416 x 294 | 108:16900 |
+| `md-takenlijst.png` | 856 x 424 | 108:16905 |
+| `md-teaser-ds.png` | 312 x 184 | 108:16915 |
+
 ## Case study: Talent Canvas
 | Bestand | Verhouding | Node in Figma |
 | --- | --- | --- |

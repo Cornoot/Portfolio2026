@@ -22,16 +22,16 @@ sectionIntro: "Ik heb gewerkt als de enige product designer bij een start up, sc
 # href: link naar de case study — zonder href geen knop.
 # imageFocus: left — op mobiel wordt de afbeelding vanaf links bijgesneden.
 projects:
-  - title: "Talent mappen met AI als meedenker, niet als beslisser"
-    body: "Talentreviews draaiden op spreadsheets en onderbuikgevoel. Talent Canvas maakt ze sneller met AI die uitleg en context geeft, terwijl de manager zelf beslist waar elke medewerker staat."
-    href: "talent-canvas.html"
+  - title: "Alles wat je moet doen, op 1 plek"
+    body: "Dialog is een online product waarmee managers hun werk versnellen door in te zetten op people management. Het product was complex en miste een duidelijk startpunt voor de werkdag. Hiervoor heb ik het manager dashboard ontworpen, met alle taken overzichtelijk uitgelijnd per gebruiker."
+    href: "manager-dashboard.html"
     ctaLabel: "Bekijk case study"
     cardColor: "sand"
     imageSide: "left"
     imageFocus: "left"
     image:
-      src: "home-talent-canvas.png"
-      alt: "De Talent Canvas: een medewerker wordt vanuit de wachtkolom naar een cel van de 9-grid gesleept"
+      src: "home-dashboard.png"
+      alt: "Het Dialog manager dashboard met een takenlijst en snelle acties"
       width: 690
       height: 592
 
@@ -47,14 +47,15 @@ projects:
       width: 690
       height: 592
 
-  - title: "Alles wat je moet doen, op 1 plek"
-    body: "Dialog is een online product waarmee managers hun werk versnellen door in te zetten op people management. Het product was complex en miste een duidelijk startpunt voor de werkdag. Hiervoor heb ik het manager dashboard ontworpen, met alle taken overzichtelijk uitgelijnd per gebruiker."
+  # Case study tijdelijk offline: geen href, dus geen knop.
+  - title: "Talent mappen met AI als meedenker, niet als beslisser"
+    body: "Talentreviews draaiden op spreadsheets en onderbuikgevoel. Talent Canvas maakt ze sneller met AI die uitleg en context geeft, terwijl de manager zelf beslist waar elke medewerker staat."
     cardColor: "gray"
     imageSide: "left"
     imageFocus: "left"
     image:
-      src: "home-dashboard.png"
-      alt: "Het Dialog manager dashboard met een takenlijst en snelle acties"
+      src: "home-talent-canvas.png"
+      alt: "De Talent Canvas: een medewerker wordt vanuit de wachtkolom naar een cel van de 9-grid gesleept"
       width: 690
       height: 592
 

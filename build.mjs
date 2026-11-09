@@ -184,13 +184,16 @@ ${voices}
    One template for every file in content/cases/. The body is a
    list of sections; each section is a list of blocks, and each
    block is a one-key object naming its type (lead, text, proof,
-   image, gallery).                                               */
+   image, gallery, teaser).                                       */
 
-/* mobileHeight: Figma crops case images to a fixed height on
-   mobile. Passed to CSS as --mh; desktop and tablet ignore it. */
+/* mobileHeight / tabletHeight: Figma sometimes crops a case image
+   to a fixed height on mobile or tablet. Passed to CSS as --mh and
+   --th; every other breakpoint ignores them. */
 function media(image, { lazy = true, mobileHeight } = {}) {
   const mh = mobileHeight ?? image.mobileHeight;
-  const style = mh ? ` style="--mh: ${Number(mh)}px"` : "";
+  const th = image.tabletHeight;
+  const vars = [mh && `--mh: ${Number(mh)}px`, th && `--th: ${Number(th)}px`].filter(Boolean);
+  const style = vars.length ? ` style="${vars.join("; ")}"` : "";
   return `<figure class="case-media"${style}>${img(image, { lazy })}</figure>`;
 }
 
@@ -212,6 +215,18 @@ const BLOCKS = {
   gallery: (b) => `
             <div class="case-gallery${b.mobileStack ? " case-gallery--stack" : ""}">
               ${(b.images || []).map((i) => media(i, { mobileHeight: b.mobileHeight })).join("\n              ")}
+            </div>`,
+  /* A card linking to another case study, e.g. "Lees meer over…". */
+  teaser: (b) => `
+            <div class="case-teaser">
+              <div class="case-teaser__text">
+                <p class="case-teaser__title">${inline(b.title)}</p>
+                <a class="btn btn--tertiary btn--icon" href="${esc(b.href)}">
+                  ${inline(b.ctaLabel || "Bekijk case study")}
+                  ${icon("arrow-sm-right")}
+                </a>
+              </div>
+              <div class="case-teaser__media">${img(b.image)}</div>
             </div>`,
 };
 
@@ -437,9 +452,11 @@ async function build() {
 
   console.log("Building…");
   const pages = [];
+  /* unlisted: true in the front-matter still builds the page (a
+     direct link keeps working) but leaves it out of the sitemap. */
   const page = async (outFile, data, content, bodyClass) => {
     await writePage(outFile, data, content, bodyClass);
-    pages.push(outFile);
+    if (!data.unlisted) pages.push(outFile);
   };
 
   const referrals = await load("referrals");
