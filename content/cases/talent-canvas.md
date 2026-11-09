@@ -2,9 +2,10 @@
 title: "Talent mappen met AI — Corné van den Boogert"
 description: "Case study: de Talent Canvas van Dialog, waarin AI managers context en redenering geeft bij het mappen van hun team, terwijl de manager zelf beslist."
 ogImage: "og-image.jpg"
-# Tijdelijk onbereikbaar: niet gelinkt vanaf de home en niet in de
-# sitemap. Haal deze regel weg om de case weer te tonen.
-unlisted: true
+# Tijdelijk offline: de pagina wordt niet gebouwd (404) en de
+# afbeeldingen van deze case gaan niet mee online. Haal deze regel
+# weg om de case weer te tonen (en zet de href op de home terug).
+offline: true
 
 company: "Dialog"
 period: "mei - okt, 2026"

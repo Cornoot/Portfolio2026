@@ -466,12 +466,27 @@ async function build() {
   await page("index.html", home.data, renderHome(home.data, referrals.data), "page-home");
   await page("about.html", about.data, renderAbout(about.data, about.content), "page-about");
 
-  /* content/cases/talent-canvas.md → talent-canvas.html */
+  /* content/cases/talent-canvas.md → talent-canvas.html
+     offline: true in the front-matter skips the case entirely: no
+     page (the URL gives a 404, so Google drops it) and its images
+     are left out of dist/ unless another page still uses them. */
+  const srcs = (data) => [...JSON.stringify(data).matchAll(/"src":"([^"]+)"/g)].map((m) => m[1]);
+  const usedImages = new Set([home, about, referrals].flatMap((p) => srcs(p.data)));
+  const offlineImages = new Set();
   const cases = (await readdir("content/cases")).filter((f) => f.endsWith(".md")).sort();
   for (const file of cases) {
     const slug = file.slice(0, -3);
     const { data } = await load(`cases/${slug}`);
+    if (data.offline) {
+      srcs(data).forEach((s) => offlineImages.add(s));
+      console.log(`  skipped ${slug} (offline)`);
+      continue;
+    }
+    srcs(data).forEach((s) => usedImages.add(s));
     await page(`${slug}.html`, data, renderCase(data), "page-case");
+  }
+  for (const s of offlineImages) {
+    if (!usedImages.has(s)) await rm(`${OUT}/assets/images/${s}`, { force: true });
   }
 
   await page("referenties.html", referrals.data, renderReferrals(referrals.data), "page-referrals");
