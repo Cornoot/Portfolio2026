@@ -1,27 +1,29 @@
 ---
-title: "Talent mappen met AI — Corné van den Boogert"
-description: "Case study: de Talent Canvas van Dialog, waarin AI managers context en redenering geeft bij het mappen van hun team, terwijl de manager zelf beslist."
+title: "Talent mapping with AI — Corné van den Boogert"
+description: "Case study: Dialog's Talent Canvas, where AI gives managers context and reasoning while mapping their team, and the manager makes the call."
 ogImage: "og-image.jpg"
-# Tijdelijk offline: de pagina wordt niet gebouwd (404) en de
-# afbeeldingen van deze case gaan niet mee online. Haal deze regel
-# weg om de case weer te tonen (en zet de href op de home terug).
-offline: true
+# Alleen bereikbaar via de directe link /Talent_review: niet gelinkt
+# vanaf de home, niet in de sitemap en met een noindex-tag, zodat
+# Google 'm niet in de zoekresultaten toont.
+url: "Talent_review"
+noindex: true
+lang: "en"
 
 company: "Dialog"
-period: "mei - okt, 2026"
-heading: "Talent mappen met AI als meedenker, niet als beslisser"
+period: "May - Oct, 2026"
+heading: "Mapping talent with AI as a thinking partner, not a decision maker"
 
 # mobileHeight: vaste hoogte op mobiel (Figma snijdt daar bij).
 hero:
   src: "tc-hero.png"
-  alt: "Het Talent-scherm van Dialog met de AI Mapping-balk en de 9-grid"
+  alt: "Dialog's Talent screen with the AI Mapping bar and the 9-grid"
   width: 1264
   height: 556
   mobileHeight: 320
 
 tldr:
   title: "TL:DR;"
-  body: "Managers vulden de 9-grid in, waarna er niets mee gebeurde: potentie was vaag en geschiedenis ontbrak. Ik ontwierp een canvas waarop managers hun hele team in één keer plaatsen, met context en geschiedenis per medewerker. Na tests met klanten in twee landen werd AI van beslisser naar meedenker: het levert context en redenering, de manager beslist"
+  body: "Managers filled in the 9-grid, and then nothing happened with it: potential was vague and history was missing. I designed a canvas where managers place their whole team in one go, with context and history for every employee. After testing with customers in two countries, AI went from decision maker to thinking partner: it provides context and reasoning, the manager decides"
 
 # Elke sectie is een lijst blokken: lead, text, proof, image, gallery.
 # gap: tight (12px) | loose (40px) — zonder gap 24px tussen de blokken.
@@ -30,21 +32,21 @@ sections:
     blocks:
       - image:
           src: "tc-probleem.png"
-          alt: "Het Talent-scherm in Dialog met de navigatie, de wachtkolom en een zijpaneel met redenering"
+          alt: "The Talent screen in Dialog with the navigation, the waiting column and a side panel with reasoning"
           width: 856
           height: 605
           mobileHeight: 320
       - lead:
-          title: "Het probleem"
-          body: "Managers plaatsen hun team op een 9-grid (performance × potentie), maar bij alle zes geïnterviewde klanten stokte het proces direct daarna: de grid verdwijnt in een la. Geschiedenis ontbreekt, “potentie” is niet gedefinieerd (vier klanten bouwden het model zelf om) en de analyse verhuist naar Excel en Power BI. Voor de manager voelt plaatsen willekeurig, voor HR betekent het handwerk aan beide kanten, en voor Dialog dat de module maar één stap van het proces bedient."
+          title: "The problem"
+          body: "Managers place their team on a 9-grid (performance × potential), but at all six customers we interviewed, the process stalled right after: the grid ends up in a drawer. History is missing, “potential” isn't defined (four customers rebuilt the model themselves) and the analysis moves to Excel and Power BI. For managers, placing feels arbitrary; for HR, it means manual work on both ends; and for Dialog, it means the module only serves one step of the process."
 
   - blocks:
       - text:
-          title: "Wat we levereden"
-          body: "De Talent Canvas: de 9-grid is het werkblad, niet het eindrapport. Niet-geplaatste medewerkers staan in een wachtkolom en de manager sleept ze naar een vaste cel, of verplaatst ze via een actiemenu met het toetsenbord. Een klik op een medewerker opent een zijpaneel met een tijdlijn van plaatsingen, notities en het evaluatieprofiel. Daarnaast licht een AI-paneel toe waarop de plaatsingen gebaseerd zijn."
+          title: "What we delivered"
+          body: "The Talent Canvas: the 9-grid is the worksheet, not the final report. Unplaced employees wait in a column, and the manager drags them into a fixed cell, or moves them with the keyboard through an action menu. Clicking an employee opens a side panel with a timeline of placements, notes and their review profile. On top of that, an AI panel explains what the placements are based on."
       - image:
           src: "tc-canvas.png"
-          alt: "Een medewerker wordt vanuit de wachtkolom naar een cel van de 9-grid gesleept"
+          alt: "An employee being dragged from the waiting column into a cell of the 9-grid"
           width: 856
           height: 605
           mobileHeight: 320
@@ -53,71 +55,71 @@ sections:
           mobileHeight: 180
           images:
             - src: "tc-zijpaneel.png"
-              alt: "Het zijpaneel van een medewerker met een tijdlijn van plaatsingen"
+              alt: "An employee's side panel with a timeline of placements"
               width: 416
               height: 294
             - src: "tc-ai-paneel.png"
-              alt: "Het AI-paneel dat toelicht waarop de plaatsingen gebaseerd zijn"
+              alt: "The AI panel explaining what the placements are based on"
               width: 416
               height: 294
 
   - gap: tight
     blocks:
       - text:
-          title: "AI levert context, geen plaatsing"
-          body: "AI die plaatsingen voorstelt is sneller, maar managers moeten hun oordeel kunnen verantwoorden, en klanten in twee landen wezen op regelgeving. We overwogen drie rollen voor AI: alles plaatsen met een bulkactie om in één keer te accepteren, alleen de performance-as invullen, of helemaal niet plaatsen en context en redenering leveren. We kozen het laatste. Naast de knop om te mappen opent “AI context” een zijpaneel, geen overlay. Bovenaan staat de algemene zekerheid, daaronder Context (welke bronnen de AI bekeek, met datakwaliteit) en Reasoning (één gewogen samenvatting voor het hele team, geen log per persoon)."
-      - proof: "**Bewijs**: *Geen externe deelnemer begreep de bulkactie. Zichtbare bronnen bouwden juist vertrouwen op, en de eerste vraag van een manager was: kan ik dit vertrouwen?*"
+          title: "AI provides context, not placements"
+          body: "AI that suggests placements is faster, but managers need to be able to justify their judgement, and customers in two countries pointed to regulation. We considered three roles for AI: place everyone, with a bulk action to accept it all at once; fill in only the performance axis; or place no one and provide context and reasoning instead. We chose the last one. Next to the button to start mapping, “AI context” opens a side panel, not an overlay. At the top is the overall confidence, below it Context (which sources the AI looked at, with their data quality) and Reasoning (one weighted summary for the whole team, not a log per person)."
+      - proof: "**Evidence**: *Not a single external participant understood the bulk action. Visible sources, on the other hand, built trust, and a manager's first question was: can I trust this?*"
       - image:
           src: "tc-ai-context.png"
-          alt: "Het AI context-paneel met de bronnen Evaluations, Feedback en Talking points"
+          alt: "The AI context panel with the sources Evaluations, Feedback and Talking points"
           width: 856
           height: 424
           mobileHeight: 160
 
   - blocks:
       - text:
-          title: "Herkomst blijft zichtbaar"
-          body: "Een AI-suggestie overnemen moet snel gaan, maar HR moet later kunnen zien wie een plaatsing heeft bepaald. In plaats van AI- en handmatige plaatsingen gelijk te behandelen, kozen we ervoor het verschil vast te leggen en te bewaken tot aan het versturen. Elke plaatsing onthoudt of die van AI of van de manager komt, en wie wie heeft geplaatst. Openstaande AI-suggesties mogen blijven staan bij opslaan, maar blokkeren het versturen naar HR tot de manager ze heeft beoordeeld."
+          title: "Where a placement came from stays visible"
+          body: "Accepting an AI suggestion should be quick, but HR needs to be able to see later who decided on a placement. Instead of treating AI and manual placements the same, we chose to record the difference and guard it all the way to submission. Every placement remembers whether it came from AI or from the manager, and who placed whom. Open AI suggestions can stay in place when saving, but they block submitting to HR until the manager has reviewed them."
 
   - gap: tight
     blocks:
       - text:
-          title: "Een levende map, een vaste momentopname voor HR"
-          body: "Managers willen hun map altijd kunnen bijwerken, maar HR heeft per ronde een versie nodig die niet meer verandert. In plaats van een grid die elke ronde opnieuw wordt ingevuld, kozen we voor een map die altijd openstaat. Die wordt automatisch opgeslagen als snapshot, en versturen naar HR is een bewuste stap. Nieuwe medewerkers verschijnen vanzelf in de wachtkolom, en eerdere rondes zijn read-only terug te zien naast “Your current map”."
-      - proof: "**Bewijs:** *In 4 van de 6 discovery-interviews was de grid een statische momentopname zonder geschiedenis. Ook in de interne tests misten deelnemers een historisch overzicht, en alle vier liepen vast op het terugdraaien van een plaatsing.*"
+          title: "A living map, a fixed snapshot for HR"
+          body: "Managers want to be able to update their map at any time, but HR needs a version per round that no longer changes. Instead of a grid that's filled in from scratch every round, we chose a map that's always open. It's saved automatically as a snapshot, and submitting to HR is a deliberate step. New employees show up in the waiting column on their own, and previous rounds can be viewed read-only next to “Your current map”."
+      - proof: "**Evidence:** *In 4 of the 6 discovery interviews, the grid was a static snapshot without history. In the internal tests, participants also missed a historical overview, and all four got stuck undoing a placement.*"
       - gallery:
           mobileStack: true
           mobileHeight: 180
           images:
             - src: "tc-map-leeg.png"
-              alt: "Een lege talent map met een uitnodiging om te beginnen"
+              alt: "An empty talent map with an invitation to get started"
               width: 416
               height: 294
             - src: "tc-map-historie.png"
-              alt: "Een eerdere ronde, read-only terug te zien naast de huidige map"
+              alt: "A previous round, viewable read-only next to the current map"
               width: 416
               height: 293
 
   - blocks:
       - text:
-          title: "Uitkomst"
-          body: "De 9-grid is van eindrapport naar werkblad gegaan, en AI van beslisser naar meedenker. AI versnelt de manager door context en redenering klaar te zetten, terwijl het oordeel bij de manager blijft. Dat weten we vooralsnog uit acht usability tests: elke manager wilde het laatste woord en vertrouwde de AI meer zodra de bronnen zichtbaar waren."
+          title: "Outcome"
+          body: "The 9-grid went from final report to worksheet, and AI from decision maker to thinking partner. AI speeds up managers by preparing context and reasoning, while the judgement stays with the manager. So far we know this from eight usability tests: every manager wanted the final say, and trusted the AI more as soon as the sources were visible."
 
 # facts: linkerkolom. Een href maakt de waarde een (onderstreepte) link.
 behindTheScenes:
-  title: "Achter de schermen"
+  title: "Behind the scenes"
   facts:
-    - label: "Rol"
+    - label: "Role"
       value: "Product Designer"
-    - label: "Bedrijf"
+    - label: "Company"
       value: "Dialog"
     - label: "Expertise"
       value: "End-to-end research, testing, delivery"
-    - label: "Periode"
+    - label: "Period"
       value: "Q3/Q4 2026"
   notes:
-    - title: "Wat ik heb geleerd"
-      body: "De wens vanuit business is niet de juiste gebruikerswens om te vervullen. Wat startte naar een “Agentic-first” idee, eindigde met een feature waarbij AI enkel de toplaag dicteert van de interactie. De manager blijft controle en uitvoering behouden."
-    - title: "Wat ik wilde toevoegen aan dit concept"
-      body: "Het concept ansich was redelijk af. Managers kunnen starten met het plotten van hun talent op een 9-grid. Voor een volgende stap waren “follow up actions” aan de beurt, om de manager inzichten direct om te laten zetten naar nieuwe stappen"
+    - title: "What I learned"
+      body: "What the business wants isn't necessarily the right user need to fulfil. What started as an “agentic-first” idea ended as a feature where AI only shapes the top layer of the interaction. The manager stays in control and does the work."
+    - title: "What I wanted to add to this concept"
+      body: "The concept itself was fairly complete. Managers can start plotting their talent on a 9-grid. The next step would have been “follow-up actions”, so managers can turn insights straight into next steps"
 ---

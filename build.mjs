@@ -465,6 +465,12 @@ async function writePage(outFile, data, content, bodyClass) {
     .replace(/{{siteUrl}}/g, SITE_URL)
     .replace(/{{path}}/g, outFile === "index.html" ? "/" : `/${outFile}`)
     .replace(/{{bodyClass}}/g, bodyClass)
+    /* lang: en in the front-matter for an English page (default nl).
+       noindex: true asks search engines to leave the page out of
+       their results; the link itself keeps working. */
+    .replace(/{{lang}}/g, data.lang === "en" ? "en" : "nl")
+    .replace(/{{locale}}/g, data.lang === "en" ? "en_GB" : "nl_NL")
+    .replace("{{robots}}", data.noindex ? '\n  <meta name="robots" content="noindex, nofollow">' : "")
     .replace("{{content}}", () => content);
 
   /* GitHub Pages serves 404.html at whatever URL was missing, also
@@ -490,10 +496,11 @@ async function build() {
   console.log("Building…");
   const pages = [];
   /* unlisted: true in the front-matter still builds the page (a
-     direct link keeps working) but leaves it out of the sitemap. */
+     direct link keeps working) but leaves it out of the sitemap.
+     noindex implies unlisted. */
   const page = async (outFile, data, content, bodyClass) => {
     await writePage(outFile, data, content, bodyClass);
-    if (!data.unlisted) pages.push(outFile);
+    if (!data.unlisted && !data.noindex) pages.push(outFile);
   };
 
   const referrals = await load("referrals");
@@ -520,7 +527,10 @@ async function build() {
       continue;
     }
     srcs(data).forEach((s) => usedImages.add(s));
-    await page(`${slug}.html`, data, renderCase(data), "page-case");
+    /* url: in the front-matter overrides the file name, e.g.
+       url: "Talent_review" → Talent_review.html, served by GitHub
+       Pages at /Talent_review as well. */
+    await page(`${data.url || slug}.html`, data, renderCase(data), "page-case");
   }
   for (const s of offlineImages) {
     if (!usedImages.has(s)) await rm(`${OUT}/assets/images/${s}`, { force: true });
