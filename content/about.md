@@ -40,11 +40,21 @@ blocks:
 
         Op deze ervaring bouw ik design systems waarin visuele consistentie, toegankelijkheid en technische haalbaarheid samenkomen. Zo weet ik welke technische, business- en gebruikersbehoeften nodig zijn om een succesvolle feature te lanceren.
 
-  # De download-knoppen (cv als .md / .pdf) komen terug zodra die
-  # bestanden er zijn.
+  # downloads: de cv-bestanden staan in assets/cv/. style: primary is
+  # de zwarte knop, anders secondary. filename is de naam waaronder
+  # het bestand bij de bezoeker wordt opgeslagen.
   - cv:
       title: "Werkervaring"
       intro: "Met een master in Data-Driven Design op zak was het in 2021 tijd om de wereld te veroveren"
+      downloads:
+        - label: "Download cv als .md"
+          href: "assets/cv/cv-corne-van-den-boogert.md"
+          filename: "CV_vandenBoogert_Corne_2026.md"
+          style: "secondary"
+        - label: "Download cv als .pdf"
+          href: "assets/cv/cv-corne-van-den-boogert.pdf"
+          filename: "CV_vandenBoogert_Corne_2026.pdf"
+          style: "primary"
       jobs:
         - role: "UX/Product Designer"
           company: "Dialog"

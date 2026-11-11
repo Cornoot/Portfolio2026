@@ -725,7 +725,9 @@
 
 /* --- Werkervaring ---------------------------------------------- */
 .about-cv { display: flex; flex-direction: column; gap: 32px; padding-top: 12px; }
-.about-cv__head { display: flex; flex-direction: column; gap: 12px; }
+.about-cv__head { display: flex; flex-direction: column; gap: 16px; }
+.about-cv__lines { display: flex; flex-direction: column; gap: 12px; }
+.about-cv__downloads { display: flex; flex-wrap: wrap; gap: 16px; }
 
 .about-cv__list {
   list-style: none;

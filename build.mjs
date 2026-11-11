@@ -52,6 +52,11 @@ const ICONS = {
     viewBox: "0 0 12 10", width: 12, height: 10,
     body: `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.70711 9.70711C5.31658 10.0976 4.68342 10.0976 4.29289 9.70711L0.292894 5.70711C-0.0976312 5.31658 -0.0976312 4.68342 0.292894 4.29289L4.29289 0.292894C4.68342 -0.0976312 5.31658 -0.0976312 5.70711 0.292894C6.09763 0.683418 6.09763 1.31658 5.70711 1.70711L3.41421 4L11 4C11.5523 4 12 4.44772 12 5C12 5.55228 11.5523 6 11 6H3.41421L5.70711 8.29289C6.09763 8.68342 6.09763 9.31658 5.70711 9.70711Z" fill="currentColor"/>`,
   },
+  /* Icon/Solid/document-download — the CV download buttons. */
+  "document-download": {
+    viewBox: "0 0 20 20", width: 20, height: 20,
+    body: `<path fill-rule="evenodd" clip-rule="evenodd" d="M6 2C4.89543 2 4 2.89543 4 4V16C4 17.1046 4.89543 18 6 18H14C15.1046 18 16 17.1046 16 16V7.41421C16 6.88378 15.7893 6.37507 15.4142 6L12 2.58579C11.6249 2.21071 11.1162 2 10.5858 2H6ZM11 8C11 7.44772 10.5523 7 10 7C9.44772 7 9 7.44772 9 8V11.5858L7.70711 10.2929C7.31658 9.90237 6.68342 9.90237 6.29289 10.2929C5.90237 10.6834 5.90237 11.3166 6.29289 11.7071L9.29289 14.7071C9.68342 15.0976 10.3166 15.0976 10.7071 14.7071L13.7071 11.7071C14.0976 11.3166 14.0976 10.6834 13.7071 10.2929C13.3166 9.90237 12.6834 9.90237 12.2929 10.2929L11 11.5858V8Z" fill="currentColor"/>`,
+  },
   "paper-airplane": {
     viewBox: "0 0 17 17", width: 15, height: 15,
     body: `<path d="M8.50001 14.3333L16 16L8.50001 1L1.00001 16L8.50001 14.3333ZM8.50001 14.3333V7.66667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
@@ -374,8 +379,16 @@ const ABOUT_BLOCKS = {
   cv: (b) => `
         <section class="about-cv">
           <div class="about-cv__head" data-reveal>
-            <h2 class="h4">${inline(b.title)}</h2>
-            <p class="about-cv__intro">${inline(b.intro)}</p>
+            <div class="about-cv__lines">
+              <h2 class="h4">${inline(b.title)}</h2>
+              <p class="about-cv__intro">${inline(b.intro)}</p>
+            </div>${b.downloads?.length ? `
+            <div class="about-cv__downloads">${b.downloads.map((d) => `
+              <a class="btn btn--${d.style === "primary" ? "primary" : "secondary"} btn--icon" href="${esc(d.href)}" download="${esc(d.filename || "")}">
+                ${inline(d.label)}
+                ${icon("document-download")}
+              </a>`).join("")}
+            </div>` : ""}
           </div>
           <ol class="about-cv__list">${(b.jobs || []).map((j) => `
             <li class="job" data-reveal>
