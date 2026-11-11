@@ -48,7 +48,7 @@ blocks:
       jobs:
         - role: "UX/Product Designer"
           company: "Dialog"
-          period: "Sep. 2025 - Heden"
+          period: "Sept. 2025 - Heden"
           description: "Ik ben eindverantwoordelijk voor het opzetten en onderhouden van het Dialog Design System (DDS), inclusief documentatie, tokens en WCAG-richtlijnen. Dat leverde snellere oplevertijd van features op. Met continu onderzoek en testen met managers bereikte ik 72% feature-adoptie."
         - role: "Product Designer"
           company: "MoreApp"
@@ -68,7 +68,7 @@ blocks:
           description: "Ik vertaalde de behoeften van kamerzoekende studenten naar persona’s, user journeys, service blueprints en wireframes voor het portaal van Stadswonen Rotterdam."
 
   # Interactieve fotogroep (Figma: Fotogroupinteractive). Op desktop
-  # liggen de foto's verspreid over een vlak van 1296 x 676; x, y,
+  # liggen de foto's verspreid over een vlak van 1296 x 686; x, y,
   # width en height zijn de maten uit Figma (ongedraaid), rotate in
   # graden. Volgorde = stapelvolgorde: de laatste ligt bovenop.
   # Op tablet en mobiel staan ze in een gewoon raster, in deze volgorde.
@@ -78,7 +78,7 @@ blocks:
         width: 312
         height: 371
         x: 885.19
-        y: 174.76
+        y: 156.55
         rotate: 4.54
         radius: 16
       - src: "tekening-kat.jpg"
@@ -86,7 +86,7 @@ blocks:
         width: 283
         height: 290
         x: 341
-        y: 110
+        y: 91.79
         rotate: 0
         radius: 16
       - src: "wandelen.jpg"
@@ -94,7 +94,7 @@ blocks:
         width: 315.79
         height: 283.13
         x: 636.8
-        y: 339.36
+        y: 321.15
         rotate: 5.69
         radius: 12
       - src: "trouwfoto.jpg"
@@ -102,7 +102,7 @@ blocks:
         width: 332.64
         height: 319.1
         x: 609.24
-        y: 51.74
+        y: 33.53
         rotate: -0.53
         radius: 12
       - src: "zeehond.jpg"
@@ -110,7 +110,7 @@ blocks:
         width: 301
         height: 306
         x: 102.89
-        y: 243.7
+        y: 225.49
         rotate: 4.24
         radius: 16
       - src: "miauwmiauws.jpg"
@@ -118,7 +118,7 @@ blocks:
         width: 348
         height: 312
         x: 317.98
-        y: 342.05
+        y: 323.84
         rotate: -6.26
         radius: 12
 

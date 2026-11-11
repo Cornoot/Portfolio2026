@@ -787,7 +787,7 @@
 }
 
 /* --- Photo pile (Fotogroupinteractive) ------------------------ */
-/* Desktop: the photos lie scattered over a 1296 x 676 grey frame,
+/* Desktop: the photos lie scattered over a 1296 x 686 grey frame,
    at Figma's positions and tilts (passed in per photo as --x, --y,
    --w, --h, --r, as percentages of the frame). Hovering one lifts
    it: it straightens, grows and casts a deeper shadow, while the
@@ -796,7 +796,7 @@
    over one transform.                                            */
 .photo-pile {
   position: relative;
-  aspect-ratio: 1296 / 676;
+  aspect-ratio: 1296 / 686;
   background: var(--bg-sunken-secondary);
   border-radius: var(--radius-16);
 }

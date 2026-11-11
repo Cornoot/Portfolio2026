@@ -352,10 +352,10 @@ function renderNotFound(data) {
 const lead = (s) => (s ? `<span class="about-lead">${inline(s)}</span> ` : "");
 
 /* The scattered photo group. Each photo's x/y/width/height come
-   straight from Figma's 1296 x 676 frame and are handed to CSS as
+   straight from Figma's 1296 x 686 frame and are handed to CSS as
    percentages, so the arrangement scales with the column. Below
    desktop the same figures fall into a plain grid (pages.css).   */
-const STAGE = { w: 1296, h: 676 };
+const STAGE = { w: 1296, h: 686 };
 const pct = (v, of) => `${+(v / of * 100).toFixed(3)}%`;
 
 const ABOUT_BLOCKS = {
