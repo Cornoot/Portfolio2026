@@ -184,24 +184,6 @@
   .topnav__actions { gap: 4px; }
 }
 
-/* --- Photo frame (about portrait) ---------------------------- */
-/* White border, 24px radius, soft shadow. */
-.photo-frame {
-  background: var(--gray-0);
-  border-radius: var(--radius-24);
-  box-shadow: var(--shadow-photo);
-  padding: 24px;
-  max-width: 526px;
-  width: 100%;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-12);
-  object-fit: cover;
-}
-
 /* --- Section intro ------------------------------------------ */
 /* Header/h4 + Text/Intro/medium: "Uitgelicht werk", "Wat collega's
    over mij zeggen", and the referrals page header.               */

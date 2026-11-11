@@ -1,29 +1,16 @@
 /* ============================================================
-   pages.css — home, case study, referrals and about layout
+   pages.css — home, case study, referrals, about and 404 layout
    ============================================================ */
 
-/* --- Page stack ----------------------------------------------- */
-/* About is a column of "cards" (hero, then content panels) on the
-   shared sunken page background, each 8px apart.                 */
-.page-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 /* --- Hero card -------------------------------------------------- */
-/* The coloured box itself. .hero (home) / .about__intro (about)
-   handle the flex layout of what's inside it.                    */
+/* The coloured box itself (home). .hero handles the flex layout
+   of what's inside it. The about hero has its own .about-hero.   */
 .hero-card {
   border-radius: var(--radius-16);
   padding-block: 72px;
   overflow: clip;
 }
-.hero-card--home  { background: var(--brand-50); }
-.hero-card--about {
-  background: var(--hero-lavender);
-  border-radius: var(--radius-24);
-}
+.hero-card--home { background: var(--brand-50); }
 
 /* ============================================================
    Home (file B3RobX7ftpScUngBjXJyIX: 43:13182 desktop,
@@ -86,8 +73,7 @@
 
 /* The photo is tilted -2deg. Like .logo-badge-frame, the fixed
    248px box is the rotated photo's bounding box in Figma, so the
-   tilt never nudges the layout around it. It's also the anchor for
-   the speech bubble. */
+   tilt never nudges the layout around it. */
 .hero__media {
   position: relative;
   flex-shrink: 0;
@@ -112,38 +98,6 @@
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-12);
-}
-
-/* Speech bubble with the eyebrow text. Offsets are measured from
-   the photo box. Figma gives the rotated bounding box, CSS
-   positions the unrotated box, so each value has the rotation's
-   overhang added. Desktop (and the derived tablet): left of the
-   photo, tilted -9.52deg. Mobile: right of it, tilted 7.96deg. */
-.hero__bubble {
-  position: absolute;
-  left: -188px;
-  top: 196px;
-  z-index: 1;
-  display: flex;
-  padding: 8px 17px;
-  background: var(--gray-0);
-  border-radius: var(--radius-40);
-  box-shadow: var(--shadow-bubble);
-  transform: rotate(-9.52deg);
-  white-space: nowrap;
-}
-
-.hero__bubble span { position: relative; } /* text above the tail */
-
-.hero__bubble-tail {
-  position: absolute;
-  right: 19px;
-  top: 26px;
-  transform: rotate(-38.41deg);
-}
-
-@media (max-width: 767px) {
-  .hero__bubble { left: 150px; top: 284px; transform: rotate(7.96deg); }
 }
 
 /* --- Home: featured work -------------------------------------- */
@@ -532,177 +486,435 @@
 }
 
 /* ============================================================
-   About
+   About (B3RobX7ftpScUngBjXJyIX: 158:21957 desktop — no tablet
+   or mobile frame; both are derived)
    ============================================================ */
-.about {
+
+/* --- Hero ------------------------------------------------------ */
+/* Same 1392px frame as the home hero (.hero-wrap). Text column on
+   the 856px content line, tilted portrait to its right, which hangs
+   46.5px past that line as in Figma. Both centred vertically in an
+   866px-high card.                                                */
+.about-hero {
+  display: flex;
+  align-items: center;
+  min-height: 866px;
+  padding: 72px 24px;
+  background: var(--hero-lavender);
+  border-radius: var(--radius-16);
+  overflow: clip;
+}
+
+.about-hero__inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 35.5px;
+}
+
+.about-hero__text {
+  flex: 0 0 432px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.about__intro {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.about__intro-col { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
-.about__intro-text { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 484px; }
-
-.about__section { display: flex; flex-direction: column; gap: 16px; }
-.about__section p { max-width: 75ch; }
-
-@media (max-width: 1023px) {
-  .about__intro { flex-direction: column; }
-  .about__intro-text { max-width: none; }
-  .about__portrait { align-self: center; }
-}
-
-/* --- About content panel -------------------------------------- */
-/* White surface card at radius-24. Two of these stack per page.  */
-.about__panel {
-  background: var(--bg-default);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-24);
-  padding: 80px 110px;
-  display: flex;
-  flex-direction: column;
-  gap: 72px;
-}
-
-@media (max-width: 1023px) {
-  .about__panel { padding: 80px 40px; }
-}
-
-@media (max-width: 767px) {
-  .about__panel { padding: 24px 16px; }
-}
-
-/* --- CV list ------------------------------------------------- */
-.cv { display: flex; flex-direction: column; gap: 16px; }
-
-.cv__item {
-  display: flex;
-  gap: 24px;
-  padding: 24px 32px 24px 24px;
-  border-radius: var(--radius-8);
-}
-.cv__item--row1 { background: var(--cv-row-1); }
-.cv__item--row2 { background: var(--cv-row-2); }
-.cv__item--row3 { background: var(--cv-row-3); }
-
-.cv__head { width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; }
-
-.cv__role {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 24px;
-  line-height: 38px;
-  font-weight: 700;
-  color: var(--gray-900);
-}
-
-.cv__label {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px;
-  border-radius: 4px;
-  background: var(--cv-label-bg);
+/* Text/Header/H5: "By day:" grey, the role in primary. */
+.about-hero__title,
+.about-text__title {
   font-family: var(--font-body);
-  font-size: 8px;
-  line-height: 8px;
-  font-weight: 600;
-  color: var(--card-meta);
-  white-space: nowrap;
+  font-size: var(--text-h5-size);
+  line-height: var(--text-h5-line);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.about-lead { color: var(--text-tertiary); }
+
+/* Text/Intro/regular. */
+.about-hero__intro,
+.about-text__body,
+.about-cv__intro {
+  font-family: var(--font-body);
+  font-size: var(--intro-size);
+  line-height: var(--intro-line);
+  font-weight: 400;
+  color: var(--text-secondary);
 }
 
-.cv__duration {
+/* The portrait's box is its rotated bounding box in Figma (435 x
+   451.4 around a 420 x 437 photo at 2deg), so the tilt never pushes
+   the layout around. It is also the anchor for the speech bubble. */
+.about-hero__media {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(435px, 100%);
+  aspect-ratio: 435 / 451.4;
+  margin-right: -46.5px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-family: var(--font-display);
-  font-size: var(--body-size);
-  line-height: var(--body-line);
-  color: var(--card-meta);
-}
-.cv__dot { width: 4px; height: 4px; border-radius: 50%; background: var(--card-meta); flex-shrink: 0; }
-
-.cv__description { flex: 1 1 auto; min-width: 0; color: var(--gray-800); }
-
-@media (max-width: 767px) {
-  .cv__item { flex-direction: column; gap: 24px; }
-  .cv__head { width: auto; }
-  .cv__role { font-size: 20px; line-height: 32px; flex-wrap: wrap; }
+  justify-content: center;
 }
 
-/* --- Photo grid ---------------------------------------------- */
-/* Figma treats each slot as a fixed-size frame with "clip
-   content" on: the photo is cropped to fill its slot, the slot
-   size never bends to fit the photo. Track sizes below are the
-   exact Figma numbers per breakpoint; object-fit:cover on the
-   img does the actual cropping.                                 */
-.photo-grid {
-  display: grid;
-  gap: 16px;
+.about-hero__photo {
+  width: 96.55%; /* 420 of 435 */
+  aspect-ratio: 420 / 437;
+  border: 16px solid var(--text-inverse);
+  border-radius: 16.768px;
+  box-shadow: var(--shadow-portrait);
+  background: var(--text-inverse);
   overflow: hidden;
+  rotate: 2deg;
 }
 
-.photo-grid__item { margin: 0; border-radius: var(--radius-12); overflow: hidden; }
-
-.photo-grid img {
+.about-hero__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-12);
 }
 
-/* Desktop: 3 columns × 2 rows. Trouwfoto spans both rows. */
-.photo-grid {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 312px);
-  grid-template-areas: "a b c" "d b e";
-  height: 640px;
+/* Speech bubble, tilted -9.52deg. Figma gives the rotated bounding
+   box; this is the unrotated box with the same centre: its right
+   edge 9px left of the portrait's box, 10px above its top. The
+   tail (rotated -38.41deg) sits 37px from the right, 10px above
+   the bottom edge, so it pokes out below towards the portrait.   */
+.about-bubble {
+  position: absolute;
+  right: calc(100% + 9px);
+  top: -10px;
+  z-index: 1;
+  display: flex;
+  padding: 10px 20px;
+  background: var(--gray-0);
+  border-radius: var(--radius-40);
+  box-shadow: var(--shadow-bubble);
+  rotate: -9.52deg;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  color: var(--text-tertiary);
 }
-.photo-grid__item:nth-child(1) { grid-area: a; } /* Miauwmiauws */
-.photo-grid__item:nth-child(2) { grid-area: b; } /* Trouwfoto   */
-.photo-grid__item:nth-child(3) { grid-area: c; } /* Moose       */
-.photo-grid__item:nth-child(4) { grid-area: d; } /* Meme        */
-.photo-grid__item:nth-child(5) { grid-area: e; } /* Bass        */
+.about-bubble span { position: relative; } /* text above the tail */
 
-/* Tablet: 2 columns × 3 rows. Trouwfoto spans the top two rows. */
-@media (max-width: 1023px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 312px);
-    grid-template-areas: "a b" "c b" "d e";
-    height: 968px;
-  }
+.about-bubble__tail {
+  position: absolute;
+  right: 37px;
+  top: calc(100% - 10px);
+  rotate: -38.41deg;
 }
 
-/* Mobile: single column, each photo keeps its own ratio —
-   no clipping needed since there's no row to align against. */
+/* Tablet and mobile: portrait on top, text below, both centred.
+   The bubble moves onto the portrait's top-left corner, since
+   there is no room beside it.                                    */
+@media (max-width: 1199px) {
+  .about-hero { min-height: 0; padding: 56px 40px; }
+  .about-hero__inner { flex-direction: column-reverse; gap: 48px; }
+  .about-hero__text { flex: none; width: 100%; max-width: 560px; }
+  .about-hero__media { margin-right: 0; }
+  .about-bubble { right: auto; left: -24px; top: -28px; }
+}
+
 @media (max-width: 767px) {
-  .photo-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-template-areas: none;
-    height: auto;
-    overflow: visible;
+  .about-hero { padding: 64px 24px 48px; border-radius: 0; }
+  .about-hero__inner { gap: 40px; }
+  .about-hero__photo { border-width: 12px; }
+  .about-bubble {
+    left: -8px;
+    top: -36px;
+    padding: 8px 16px;
+    font-size: var(--intro-size);
+    line-height: var(--intro-line);
   }
-  .photo-grid__item:nth-child(1) { grid-area: auto; aspect-ratio: 329 / 312; }
-  .photo-grid__item:nth-child(2) { grid-area: auto; aspect-ratio: 329 / 640; }
-  .photo-grid__item:nth-child(3) { grid-area: auto; aspect-ratio: 329 / 312; }
-  .photo-grid__item:nth-child(4) { grid-area: auto; aspect-ratio: 329 / 312; }
-  .photo-grid__item:nth-child(5) { grid-area: auto; aspect-ratio: 1 / 1; }
+  .about-bubble__tail { right: 26px; }
 }
 
-/* --- Closing block ------------------------------------------- */
-.closing { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
-.closing h3 { font-style: italic; }
-.closing p { max-width: 75ch; }
+/* --- Column of blocks ---------------------------------------- */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 72px;
+  margin-top: 72px;
+}
+
+.about > * { width: 100%; max-width: var(--content-max); }
+.about > .photo-pile { max-width: none; }
+
+.page-about .site-footer { margin-top: 72px; }
+
+@media (max-width: 1199px) {
+  .about { gap: 56px; margin-top: 56px; }
+}
+
+@media (max-width: 767px) {
+  .about { gap: 48px; margin-top: 48px; padding-inline: 16px; }
+  .page-about .site-footer { margin-top: 56px; }
+}
+
+/* --- Quote ----------------------------------------------------- */
+/* Header/h4 quote with Text/Intro source. The big marks are REM
+   48/48 in bg/accent/blue: the opening one tucked behind the first
+   letter, the closing one right after the last word.             */
+.about-quote {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-quote__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.about-quote::before,
+.about-quote__mark {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--bg-accent-blue);
+}
+
+.about-quote::before {
+  content: "“";
+  position: absolute;
+  left: -19px;
+  top: -4px;
+  z-index: -1;
+  line-height: 48px;
+}
+
+.about-quote__mark--close { line-height: 0; margin-left: 2px; vertical-align: -0.12em; }
+
+.about-quote__source {
+  font-family: var(--font-body);
+  font-size: var(--intro-size);
+  line-height: var(--intro-line);
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 767px) {
+  .about-quote__text { font-size: 24px; line-height: 36px; }
+  .about-quote::before { left: -10px; top: -8px; }
+}
+
+/* --- Text blocks ---------------------------------------------- */
+.about-text { display: flex; flex-direction: column; gap: 8px; }
+
+/* "Over de jaren heen..." — Text/Header/h6 (REM 20/28). */
+.about-text--small .about-text__title {
+  font-family: var(--font-display);
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+}
+
+/* A blank line between paragraphs, as in Figma. */
+.about-text__body { display: flex; flex-direction: column; gap: var(--intro-line); }
+.about-text__body a { color: var(--text-link); text-decoration: underline; }
+
+/* --- Werkervaring ---------------------------------------------- */
+.about-cv { display: flex; flex-direction: column; gap: 32px; padding-top: 12px; }
+.about-cv__head { display: flex; flex-direction: column; gap: 12px; }
+
+.about-cv__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.job {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.job__head { flex: 0 0 360px; display: flex; flex-direction: column; gap: 4px; }
+
+.job__role {
+  font-family: var(--font-body);
+  font-size: var(--text-h5-size);
+  line-height: var(--text-h5-line);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.job__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--text-tertiary);
+}
+.job__company { font-weight: 600; }
+.job__dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+.job__description {
+  flex: 1 1 0;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1023px) {
+  .job__head { flex-basis: 260px; }
+}
+
+@media (max-width: 767px) {
+  .job { flex-direction: column; gap: 12px; }
+  .job__head { flex: none; }
+  .job__role { font-size: var(--intro-size); line-height: var(--intro-line); }
+}
+
+/* --- Photo pile (Fotogroupinteractive) ------------------------ */
+/* Desktop: the photos lie scattered over a 1296 x 676 grey frame,
+   at Figma's positions and tilts (passed in per photo as --x, --y,
+   --w, --h, --r, as percentages of the frame). Hovering one lifts
+   it: it straightens, grows and casts a deeper shadow, while the
+   others settle back a little. Uses the individual rotate/scale/
+   translate properties, so hover and the entrance never fight
+   over one transform.                                            */
+.photo-pile {
+  position: relative;
+  aspect-ratio: 1296 / 676;
+  background: var(--bg-sunken-secondary);
+  border-radius: var(--radius-16);
+}
+
+.photo-pile__item {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  rotate: var(--r);
+  transform-origin: var(--ox) var(--oy);
+}
+
+.photo-pile__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (hover: hover) and (min-width: 1200px) {
+  .photo-pile__item { cursor: zoom-in; }
+}
+
+@media (hover: hover) and (min-width: 1200px) and (prefers-reduced-motion: no-preference) {
+  /* z-index waits until the photo has shrunk back before it drops,
+     so it never ducks under its neighbours mid-way.              */
+  .photo-pile__item {
+    transition:
+      scale var(--transition-pile) var(--ease-pile),
+      rotate var(--transition-pile) var(--ease-pile),
+      box-shadow var(--transition-pile) var(--ease),
+      filter var(--transition-pile) var(--ease),
+      z-index 0s linear var(--transition-pile);
+  }
+
+  .photo-pile__item:hover {
+    z-index: 10;
+    scale: 1.22;
+    rotate: calc(var(--r) * 0.25);
+    box-shadow: var(--shadow-pile-lifted);
+    transition-delay: 0s;
+  }
+
+  .photo-pile:has(.photo-pile__item:hover) .photo-pile__item:not(:hover) {
+    scale: 0.96;
+    filter: saturate(0.8) brightness(0.97);
+  }
+}
+
+/* Reduced motion: still bring the hovered photo to the front, just
+   without the movement. */
+@media (hover: hover) and (min-width: 1200px) and (prefers-reduced-motion: reduce) {
+  .photo-pile__item:hover { z-index: 10; box-shadow: var(--shadow-pile-lifted); }
+}
+
+/* Entrance: the photos drop onto the pile one by one once it
+   scrolls into view. Only when reveal.js runs (html.has-reveal),
+   so without JS they're simply there. The frame itself doesn't
+   fade — the photos do the work.                                  */
+@media (prefers-reduced-motion: no-preference) {
+  html.has-reveal .photo-pile[data-reveal] { opacity: 1; transform: none; }
+  html.has-reveal .photo-pile:not(.is-visible) .photo-pile__item { opacity: 0; }
+  html.has-reveal .photo-pile.is-visible .photo-pile__item {
+    animation: pile-drop 650ms var(--ease-pile) both;
+    animation-delay: calc(var(--i) * 90ms);
+  }
+}
+
+@keyframes pile-drop {
+  from { opacity: 0; translate: 0 40px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* Tablet: a plain two-column grid on the same grey frame, every
+   photo square and straight, like the old about grid.            */
+@media (max-width: 1199px) {
+  .photo-pile {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  .photo-pile__item {
+    position: static;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    rotate: none;
+    border-radius: var(--radius-12);
+  }
+}
+
+/* Mobile: one column, each photo at its own ratio. */
+@media (max-width: 767px) {
+  .photo-pile { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+  .photo-pile__item { aspect-ratio: auto; }
+  .photo-pile__item img { height: auto; }
+}
+
+/* --- One last thing ------------------------------------------- */
+/* Header/h4 + Text/Intro/regular at 24/38. */
+.about-closing { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+
+.about-closing__body {
+  font-family: var(--font-body);
+  font-size: var(--intro-lg-size);
+  line-height: var(--intro-lg-line);
+  color: var(--gray-700);
+}
+
+@media (max-width: 767px) {
+  .about-closing__body { font-size: var(--intro-size); line-height: var(--intro-line); }
+}
 
 /* ============================================================
    404 (B3RobX7ftpScUngBjXJyIX: 138:17202 desktop — no tablet or

@@ -4,8 +4,28 @@
     {
       "name": "dist-preview",
       "runtimeExecutable": "powershell.exe",
-      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\Corne\\AppData\\Local\\Temp\\claude\\5b447f2f6439f5b8\\1abe7f9c-3baa-45a8-a75f-f574c5ee44de\\scratchpad\\serve.ps1", "-Root", "H:\\Portfolio\\Portfolio2026\\dist", "-Port", "4174"],
+      "runtimeArgs": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\Corne\\AppData\\Local\\Temp\\claude\\5b447f2f6439f5b8\\1abe7f9c-3baa-45a8-a75f-f574c5ee44de\\scratchpad\\serve.ps1",
+        "-Root",
+        "H:\\Portfolio\\Portfolio2026\\dist",
+        "-Port",
+        "4174"
+      ],
       "port": 4174
+    },
+    {
+      "name": "dist-preview-mac",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": [
+        "-c",
+        "cd \"$0\" && exec python3 -m http.server 4175",
+        "/private/tmp/claude-501/-Users-cornevandenboogert-Documents-GitHub-Portfolio2026/bb70bc07-a2c4-4413-b61b-5274e00f815c/scratchpad/site"
+      ],
+      "port": 4175
     }
   ]
 }

@@ -162,13 +162,14 @@ p { margin: 0; }
 }
 
 /* Op mobiel lopen de panelen van rand tot rand, zoals in Figma: de
-   hero en de about-panelen raken de schermrand en zetten hun eigen
-   binnenmarge. De home-secties en de referrals-pagina zetten hun
-   eigen 16/20px (pages.css).
-   .prose-shell zit alleen in de hero-kaarten en levert daar de 24px
+   hero raakt de schermrand en zet zijn eigen binnenmarge. De
+   secties zetten hun eigen 16/20px (pages.css).
+   .prose-shell zit alleen in de home-hero en levert daar de 24px
    die het ontwerp binnen die kaart aanhoudt. */
 @media (max-width: 767px) {
   main .shell { padding-inline: 0; }
+  .prose-shell { padding-inline: 24px; }
+}
   .prose-shell { padding-inline: 24px; }
 
   /* Figma tekent de rand binnen het paneel zonder dat die ruimte

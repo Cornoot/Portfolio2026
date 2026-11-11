@@ -82,11 +82,9 @@ function author(r) {
 function renderHome(data, referrals) {
   const h = data.hero;
 
-  /* Centred column: tilted photo on top, the eyebrow as a speech
-     bubble beside it, then heading, intro and CTA. The bubble comes
-     before the h1 in source order, so it's still read first. Its
-     tail is a Figma export (assets/icons/bubble-tail.svg), sized at
-     its own intrinsic 21.7041 x 27.3206. */
+  /* Centred column: tilted photo on top, then heading, intro and
+     CTA. (The "Daar heb je 'm!" speech bubble moved to the about
+     page in Nov 2026.) */
   const hero = `
     <div class="hero-wrap">
       <div class="hero-card hero-card--home">
@@ -94,10 +92,6 @@ function renderHome(data, referrals) {
           <div class="hero">
             <div class="hero__media">
               <div class="hero__photo">${img(h.image, { lazy: false })}</div>
-              <p class="eyebrow hero__bubble">
-                <img class="hero__bubble-tail" src="assets/icons/bubble-tail.svg" alt="" width="21.7041" height="27.3206">
-                <span>${inline(h.eyebrow)}</span>
-              </p>
             </div>
             <div class="hero__text">
               <div class="hero__lines">
@@ -348,102 +342,119 @@ function renderNotFound(data) {
     </div>`;
 }
 
-/* ---------- about ---------------------------------------------- */
-function renderAbout(data, body) {
-  const a = data.about;
+/* ---------- about ----------------------------------------------
+   File B3RobX7ftpScUngBjXJyIX, frame 158:21957 (desktop only — the
+   tablet and mobile layouts are derived). A lavender hero, then a
+   column of blocks, like the case studies: each block is a one-key
+   object naming its type (quote, text, cv, photos, closing).     */
 
-  const intro = `
-        <div class="hero-card hero-card--about">
-          <div class="prose-shell">
-            <div class="about__intro">
-              <div class="about__intro-col">
-                <a class="btn btn--tertiary btn--icon" href="index.html">
-                  ${icon("arrow-sm-left")}
-                  Terug naar home
-                </a>
-                <div class="about__intro-text">
-                  <h1>${inline(a.heading)}</h1>
-                  <p class="intro">${inline(a.intro)}</p>
-                </div>
+/* "By day:" / "By night:" — a grey lead-in before the title. */
+const lead = (s) => (s ? `<span class="about-lead">${inline(s)}</span> ` : "");
+
+/* The scattered photo group. Each photo's x/y/width/height come
+   straight from Figma's 1296 x 676 frame and are handed to CSS as
+   percentages, so the arrangement scales with the column. Below
+   desktop the same figures fall into a plain grid (pages.css).   */
+const STAGE = { w: 1296, h: 676 };
+const pct = (v, of) => `${+(v / of * 100).toFixed(3)}%`;
+
+const ABOUT_BLOCKS = {
+  quote: (b) => `
+        <figure class="about-quote" data-reveal>
+          <blockquote class="about-quote__text">
+            <p>${inline(b.text)}<span class="about-quote__mark about-quote__mark--close" aria-hidden="true">”</span></p>
+          </blockquote>
+          <figcaption class="about-quote__source">${inline(b.source)}</figcaption>
+        </figure>`,
+  text: (b) => `
+        <section class="about-text${b.size === "small" ? " about-text--small" : ""}" data-reveal>
+          <h2 class="about-text__title">${lead(b.lead)}${inline(b.title)}</h2>
+          <div class="about-text__body">${marked.parse(String(b.body))}</div>
+        </section>`,
+  cv: (b) => `
+        <section class="about-cv">
+          <div class="about-cv__head" data-reveal>
+            <h2 class="h4">${inline(b.title)}</h2>
+            <p class="about-cv__intro">${inline(b.intro)}</p>
+          </div>
+          <ol class="about-cv__list">${(b.jobs || []).map((j) => `
+            <li class="job" data-reveal>
+              <div class="job__head">
+                <h3 class="job__role">${inline(j.role)}</h3>
+                <p class="job__meta">
+                  <span class="job__company">${esc(j.company)}</span>
+                  <span class="job__dot" aria-hidden="true"></span>
+                  <span>${esc(j.period)}</span>
+                </p>
               </div>
-              <div class="about__portrait">
-                <div class="photo-frame">${img(a.portrait, { lazy: false })}</div>
-              </div>
-            </div>
-          </div>
-        </div>`;
-
-  const sections = (data.sections || []).map((s) => `
-        <div class="about__section">
-          <h3>${inline(s.title)}</h3>
-          <p>${inline(s.body)}</p>
-        </div>`).join("\n");
-
-  const cv = (data.cv || []).map((j) => `
-          <div class="cv__item cv__item--${esc(j.rowColor || "row3")}" data-reveal>
-            <div class="cv__head">
-              <p class="cv__role">${inline(j.role)}${
-                j.label ? `<span class="cv__label">${esc(j.label)}</span>` : ""
-              }</p>
-              <p class="cv__duration">
-                <span>${esc(j.company)}</span>
-                <span class="cv__dot" aria-hidden="true"></span>
-                <span>${esc(j.period)}</span>
-              </p>
-            </div>
-            <p class="cv__description">${inline(j.description)}</p>
-          </div>`).join("\n");
-
-  const experience = `
-        <div class="about__section">
-          <h3>${inline(data.experience.title)}</h3>
-          <p>${inline(data.experience.body)}</p>
-          <div class="cv">
-${cv}
-          </div>
-        </div>`;
-
-  const gallery = (data.gallery || []).map((g) => `
-            <figure class="photo-grid__item photo-grid__item--${esc(g.shape)}" data-reveal>
-              ${img(g)}
-            </figure>`).join("\n");
-
-  const leisure = `
-        <div class="about__section">
-          <h3>${inline(data.leisure.title)}</h3>
-          <p>${inline(data.leisure.body)}</p>
-          <div class="photo-grid">
-${gallery}
-          </div>
-        </div>`;
-
-  const closing = `
-        <div class="closing">
-          <h3>${inline(data.closing.title)}</h3>
-          <p>${inline(data.closing.body)}</p>
-          <a class="btn btn--secondary btn--icon" href="${esc(data.closing.ctaHref)}">
-            ${inline(data.closing.ctaLabel)}
+              <p class="job__description">${inline(j.description)}</p>
+            </li>`).join("")}
+          </ol>
+        </section>`,
+  photos: (list) => `
+        <div class="photo-pile" data-reveal>${list.map((p, i) => {
+          /* --ox/--oy: the photo grows from the point that matches
+             its place in the frame — one on the right edge grows
+             leftwards, one at the bottom grows upwards — so a lifted
+             photo stays inside the frame. --i staggers the entrance. */
+          const cx = p.x + p.width / 2, cy = p.y + p.height / 2;
+          const style = [
+            `--x: ${pct(p.x, STAGE.w)}`, `--y: ${pct(p.y, STAGE.h)}`,
+            `--w: ${pct(p.width, STAGE.w)}`, `--h: ${pct(p.height, STAGE.h)}`,
+            `--r: ${Number(p.rotate) || 0}deg`, `--radius: ${Number(p.radius) || 12}px`,
+            `--ox: ${pct(cx, STAGE.w)}`, `--oy: ${pct(cy, STAGE.h)}`, `--i: ${i}`,
+          ].join("; ");
+          return `
+          <figure class="photo-pile__item" style="${style}">${img(p)}</figure>`;
+        }).join("")}
+        </div>`,
+  closing: (b) => `
+        <section class="about-closing" data-reveal>
+          <h2 class="h4">${inline(b.title)}</h2>
+          <p class="about-closing__body">${inline(b.body)}</p>
+          <a class="btn btn--secondary btn--icon" href="${esc(b.ctaHref)}">
+            ${inline(b.ctaLabel)}
             ${icon("paper-airplane")}
           </a>
-        </div>`;
+        </section>`,
+};
 
-  const extra = body?.trim() ? `<div class="about__section">${marked.parse(body)}</div>` : "";
+function aboutBlock(b) {
+  const [type, value] = Object.entries(b)[0];
+  if (!ABOUT_BLOCKS[type]) throw new Error(`Onbekend bloktype in about.md: "${type}"`);
+  return ABOUT_BLOCKS[type](value);
+}
 
-  return `
-    <div class="shell">
-      <div class="page-stack">
-${intro}
-        <div class="about">
-          <div class="about__panel">
-${sections}
-${experience}
+function renderAbout(data) {
+  const h = data.hero;
+
+  /* Text left, tilted portrait right; the speech bubble hangs off
+     the portrait's top-left corner. Its tail is the Figma export
+     assets/icons/bubble-tail.svg at its intrinsic 21.7041 x 27.3206. */
+  const hero = `
+    <div class="hero-wrap">
+      <div class="about-hero">
+        <div class="about-hero__inner">
+          <div class="about-hero__text">
+            <h1 class="about-hero__title">${lead(h.lead)}${inline(h.heading)}</h1>
+            <p class="about-hero__intro">${inline(h.intro)}</p>
           </div>
-          <div class="about__panel">
-${leisure}
-${extra}
-${closing}
+          <div class="about-hero__media">
+            <div class="about-hero__photo">${img(h.portrait, { lazy: false })}</div>
+            <p class="about-bubble">
+              <img class="about-bubble__tail" src="assets/icons/bubble-tail.svg" alt="" width="21.7041" height="27.3206">
+              <span>${inline(h.bubble)}</span>
+            </p>
           </div>
         </div>
+      </div>
+    </div>`;
+
+  return `
+${hero}
+    <div class="shell">
+      <div class="about">
+${(data.blocks || []).map(aboutBlock).join("\n")}
       </div>
     </div>`;
 }
@@ -508,7 +519,7 @@ async function build() {
   const about = await load("about");
 
   await page("index.html", home.data, renderHome(home.data, referrals.data), "page-home");
-  await page("about.html", about.data, renderAbout(about.data, about.content), "page-about");
+  await page("about.html", about.data, renderAbout(about.data), "page-about");
 
   /* content/cases/talent-canvas.md → talent-canvas.html
      offline: true in the front-matter skips the case entirely: no

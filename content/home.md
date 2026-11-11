@@ -4,7 +4,6 @@ description: "Een UX/Product Designer die digitale tools ontwerpt voor B2B en B2
 ogImage: "og-image.jpg"
 
 hero:
-  eyebrow: "Daar heb je 'm!"
   heading: "Ik maak complexe uitdagingen schaalbaar, toegankelijk & verrassend simpel"
   intro: "Ik ben Corné, UX/Product Designer. Ik ontwerp B2B-software en de design systems waarmee teams sneller en consistenter bouwen."
   ctaLabel: "Over mij, mijn werk en mijn leven"

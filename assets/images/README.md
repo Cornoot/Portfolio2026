@@ -61,15 +61,19 @@ laat `avatar` daar gewoon weg in `content/referrals.md`.
 | `ds-storybook-1.png` | 416 x 294 | 43:13395 |
 | `ds-storybook-2.png` | 416 x 294 | 43:13396 |
 
-## About
+## About (file B3RobX7ftpScUngBjXJyIX, frame 158:21957)
+De fotogroep-afbeeldingen zijn al bijgesneden op de uitsnede uit
+Figma en op ~2x geëxporteerd; de pagina toont ze met object-fit:cover.
+
 | Bestand | Verhouding | Node in Figma |
 | --- | --- | --- |
-| `portret-about.jpg` | 502 x 521 | 3218:9725 |
-| `miauwmiauws.jpg` | 348 x 312 | 3218:9790 |
-| `trouwfoto.jpg` | 348 x 653 | 3218:9791 |
-| `moose.jpg` | 348 x 312 | 3218:9792 |
-| `meme.jpg` | 348 x 312 | 3218:9793 |
-| `bass.jpg` | 348 x 348 | 3218:9794 |
+| `portret-about.jpg` | 388 x 405 | 158:21966 |
+| `tekening-oddball.jpg` | 312 x 371 | 158:22133 |
+| `tekening-kat.jpg` | 283 x 290 | 158:22121 |
+| `wandelen.jpg` | 316 x 283 | 158:22094 |
+| `trouwfoto.jpg` | 333 x 319 | 158:22095 |
+| `zeehond.jpg` | 301 x 306 | 158:22138 |
+| `miauwmiauws.jpg` | 348 x 312 | 158:22096 |
 
 ## Social sharing
 `og-image.jpg`, 1200 x 630. Wordt door beide pagina's gedeeld.

@@ -49,6 +49,8 @@
   /* bg/highlight/default — the only genuinely new colour. Dark
      navy behind "Achter de schermen" on the case studies. */
   --bg-highlight:           #001424;
+  /* bg/accent/blue — the big quote marks on the about page. */
+  --bg-accent-blue:         var(--card-sky);
 
   /* --- Colour: card surfaces ------------------------------ */
   /* Raw hex in Figma (not variables). One per project card,
@@ -66,12 +68,6 @@
   /* Raw hex in Figma (not a variable) — home hero now uses
      Brand/50 above instead of a bespoke colour.                */
   --hero-lavender: #f3f0ff;
-
-  /* --- Colour: CV row backgrounds (node 3218:9735) --------- */
-  --cv-row-1: #ebf6ff;
-  --cv-row-2: #f0f6ff;
-  --cv-row-3: #f4f4f5;
-  --cv-label-bg: #d4d4d8;
 
   /* --- Elevation primitives (SDS) ------------------------- */
   --depth-0:   0px;
@@ -101,6 +97,15 @@
   --shadow-bubble:
     10px 16px 104px 0px rgba(4, 9, 31, 0.15),
     var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-200);
+
+  /* About portrait (158:21966). --shadow-photo's first layer at
+     Figma's 1.3974 scale, without the small depth layers.       */
+  --shadow-portrait: 13.974px 22.358px 145.325px 0px rgba(4, 9, 31, 0.15);
+
+  /* NOT in Figma. The about photo pile: a soft rest shadow, and a
+     deeper one for the photo that is lifted on hover.            */
+  --shadow-pile: 0 1px 4px rgba(12, 12, 13, 0.10), 0 6px 20px rgba(4, 9, 31, 0.08);
+  --shadow-pile-lifted: 0 2px 6px rgba(12, 12, 13, 0.10), 10px 24px 64px rgba(4, 9, 31, 0.28);
 
   /* --- Radii ---------------------------------------------- */
   --radius-8:  8px;   /* buttons */
@@ -173,6 +178,11 @@
   /* NOT in Figma. Page-load fade-in and scroll-reveal — slower
      and gentler than the button/page-nav transitions above.     */
   --transition-slow: 500ms;
+
+  /* NOT in Figma. About photo pile: an ease-in-out with a small
+     overshoot, so a lifted photo "lands" instead of just stopping. */
+  --transition-pile: 550ms;
+  --ease-pile: cubic-bezier(0.5, -0.25, 0.25, 1.35);
 
   /* --- Focus ---------------------------------------------- */
   /* NOT in the Figma file. Added for keyboard accessibility;
