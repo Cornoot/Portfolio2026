@@ -85,7 +85,6 @@
     0px 2px 8px 0px rgba(0, 0, 0, 0.25),
     var(--depth-0) var(--depth-025) var(--depth-100) 0px var(--black-100);
 
-  --shadow-btn-secondary-hover: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
   --shadow-photo:
     10px 16px 104px 0px rgba(4, 9, 31, 0.15),

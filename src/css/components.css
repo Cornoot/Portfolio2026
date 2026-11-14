@@ -69,12 +69,12 @@
 .btn--secondary:hover {
   background: var(--gray-50);
   color: var(--gray-900);
-  filter: drop-shadow(var(--shadow-btn-secondary-hover));
+  box-shadow: var(--shadow-btn-primary-hover); /* same lift as Primary (Nov 2026) */
 }
 .btn--secondary:active {
   background: var(--bg-secondary-default);
   color: var(--text-secondary);
-  filter: none;
+  box-shadow: none;
 }
 
 /* --- Button / Tertiary --------------------------------------- */
